@@ -1,0 +1,43 @@
+name: ai_gymmate
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  shared_preferences: ^2.2.2
+  image_picker: ^1.0.7
+  google_mlkit_text_recognition: ^0.11.0
+  camera: ^0.11.0+2
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^6.0.0
+
+# 👇 THIS MUST BE AT ROOT LEVEL (NOT INSIDE flutter:)
+flutter_icons:
+  android: true
+  ios: false
+
+  # REQUIRED fallback
+  image_path: assets/images/logo_foreground.png
+
+  # Adaptive icon (Android 8+)
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: assets/images/logo_foreground.png
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/logo.png
+    - assets/images/logo_foreground.png
