@@ -5,6 +5,8 @@ import 'profile_setup_screen.dart';
 import 'login_screen.dart';
 import 'medical_reports_screen.dart';
 import 'pose_detection_screen.dart';
+import '../utils/page_transition.dart';
+import 'weekly_meal_plan_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               await ProfileService.clearProfile();
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (_) => const LoginScreen()),
+                AppPageRoute.fade(const LoginScreen()),
                 (route) => false,
               );
             },
@@ -75,9 +77,7 @@ class HomeScreen extends StatelessWidget {
                                 "Age: ${profile['age']} | "
                                 "Height: ${profile['height']} cm | "
                                 "Weight: ${profile['weight']} kg",
-                                style: const TextStyle(
-                                  color: Colors.grey,
-                                ),
+                                style: const TextStyle(color: Colors.grey),
                               ),
                             ],
                           ),
@@ -87,8 +87,8 @@ class HomeScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (_) => const ProfileSetupScreen(),
+                              AppPageRoute.slide(
+                                const ProfileSetupScreen(),
                               ),
                             );
                           },
@@ -120,41 +120,54 @@ class HomeScreen extends StatelessWidget {
                 mainAxisSpacing: 16,
                 childAspectRatio: 1.1,
                 children: [
-                  _FeatureCard(
+                  _AnimatedFeatureCard(
                     icon: Icons.restaurant,
                     title: "Nutrition",
                     subtitle: "Diet & calories",
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => const NutritionScreen(),
+                        AppPageRoute.slide(
+                          const NutritionScreen(),
                         ),
                       );
                     },
                   ),
-                  _FeatureCard(
+                  _AnimatedFeatureCard(
                     icon: Icons.fitness_center,
                     title: "Pose Detection",
                     subtitle: "Exercise form analysis",
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => const PoseDetectionScreen(),
+                        AppPageRoute.slide(
+                          const PoseDetectionScreen(),
                         ),
                       );
                     },
                   ),
-                  _FeatureCard(
+                  _AnimatedFeatureCard(
                     icon: Icons.description,
                     title: "Medical Reports",
                     subtitle: "Scan & save",
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => const MedicalReportsScreen(),
+                        AppPageRoute.slide(
+                          const MedicalReportsScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  _AnimatedFeatureCard(
+                    icon: Icons.calendar_today,
+                    title: "Weekly Meal Plan",
+                    subtitle: "Your saved recipes",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        AppPageRoute.slide(
+                          const WeeklyMealPlanScreen(),
                         ),
                       );
                     },
@@ -169,14 +182,14 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// ================= FEATURE CARD WIDGET (OVERFLOW FIXED) =================
-class _FeatureCard extends StatelessWidget {
+// ================= ANIMATED FEATURE CARD =================
+class _AnimatedFeatureCard extends StatefulWidget {
   final IconData icon;
   final String title;
   final String subtitle;
   final VoidCallback onTap;
 
-  const _FeatureCard({
+  const _AnimatedFeatureCard({
     required this.icon,
     required this.title,
     required this.subtitle,
@@ -184,51 +197,68 @@ class _FeatureCard extends StatelessWidget {
   });
 
   @override
+  State<_AnimatedFeatureCard> createState() =>
+      _AnimatedFeatureCardState();
+}
+
+class _AnimatedFeatureCardState extends State<_AnimatedFeatureCard> {
+  bool _pressed = false;
+
+  @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 14,
-            horizontal: 12,
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _pressed = true),
+      onTapUp: (_) {
+        setState(() => _pressed = false);
+        widget.onTap();
+      },
+      onTapCancel: () => setState(() => _pressed = false),
+      child: AnimatedScale(
+        scale: _pressed ? 0.96 : 1.0,
+        duration: const Duration(milliseconds: 120),
+        curve: Curves.easeOut,
+        child: Card(
+          elevation: _pressed ? 1 : 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Icon(
-                icon,
-                size: 40,
-                color: Theme.of(context).primaryColor,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 14,
+              horizontal: 12,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  widget.icon,
+                  size: 40,
+                  color: Theme.of(context).primaryColor,
                 ),
-              ),
-              const SizedBox(height: 4),
-              Flexible(
-                child: Text(
-                  subtitle,
+                const SizedBox(height: 10),
+                Text(
+                  widget.title,
                   textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 4),
+                Flexible(
+                  child: Text(
+                    widget.subtitle,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,0 +1,1 @@
+﻿Error reading PDF: 'charmap' codec can't encode character '\uf0b7' in position 10282: character maps to <undefined>

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../services/profile_service.dart';
 import '../services/nutrition_warning_service.dart';
+import '../services/recipe_suggestion_service.dart';
+import '../services/recipe_storage_service.dart';
 
 class NutritionResultScreen extends StatelessWidget {
   final int age;
@@ -42,7 +44,7 @@ class NutritionResultScreen extends StatelessWidget {
     final carbs = (calories * 0.5) / 4;
     final fats = (calories * 0.25) / 9;
 
-    // SAVE LAST NUTRITION RESULT
+    // Save last nutrition result
     ProfileService.saveLastNutrition(
       calories: calories,
       protein: protein,
@@ -56,15 +58,26 @@ class NutritionResultScreen extends StatelessWidget {
         final medical = snapshot.data ?? {};
 
         final warnings = NutritionWarningService.generateWarnings(
+          calories: calories,
+          carbs: carbs,
+          fats: fats,
+          protein: protein,
           glucose: medical['glucose'],
           systolicBP: medical['systolicBP'],
           diastolicBP: medical['diastolicBP'],
           cholesterol: medical['cholesterol'],
         );
 
+        final recipes = RecipeSuggestionService.getRecipes(
+          calories: calories,
+          glucose: medical['glucose'],
+          cholesterol: medical['cholesterol'],
+          systolicBP: medical['systolicBP'],
+        );
+
         return Scaffold(
           appBar: AppBar(title: const Text("Nutrition Result")),
-          body: Padding(
+          body: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +115,7 @@ class NutritionResultScreen extends StatelessWidget {
                           ...warnings.map(
                             (w) => Padding(
                               padding:
-                                  const EdgeInsets.only(bottom: 4),
+                                  const EdgeInsets.only(bottom: 6),
                               child: Text("⚠️ $w"),
                             ),
                           ),
@@ -141,6 +154,52 @@ class NutritionResultScreen extends StatelessWidget {
                   Icons.opacity,
                   "Fats",
                   "${fats.toStringAsFixed(0)} g",
+                ),
+
+                const SizedBox(height: 24),
+
+                // ================= RECIPE SUGGESTIONS =================
+                const Text(
+                  "Recommended Recipes",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                ...recipes.map(
+                  (recipe) => Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ListTile(
+                      leading:
+                          const Icon(Icons.restaurant_menu),
+                      title: Text(recipe["title"]!),
+                      subtitle:
+                          Text(recipe["description"]!),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.bookmark_border),
+                        onPressed: () async {
+                          await RecipeStorageService.saveRecipe(
+                            recipe["title"]!,
+                            recipe["description"]!,
+                          );
+
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                "Recipe saved to weekly plan",
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

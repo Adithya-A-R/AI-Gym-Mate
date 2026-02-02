@@ -1,30 +1,74 @@
 class NutritionWarningService {
   static List<String> generateWarnings({
+    required double calories,
+    required double carbs,
+    required double fats,
+    required double protein,
+
+    // Optional medical values
     double? glucose,
-    int? systolicBP,
-    int? diastolicBP,
+    double? systolicBP,
+    double? diastolicBP,
     double? cholesterol,
+
+    // Optional profile conditions
+    List<String> conditions = const [],
   }) {
     final List<String> warnings = [];
 
-    // High blood sugar
-    if (glucose != null && glucose >= 140) {
+    // ---------- CONDITION-BASED RULES ----------
+    for (final condition in conditions) {
+      final c = condition.toLowerCase();
+
+      if (c.contains("diabetes") && carbs > 250) {
+        warnings.add(
+          "High carbohydrate intake may not be suitable for diabetes.",
+        );
+      }
+
+      if (c.contains("hypertension")) {
+        warnings.add(
+          "Reduce salt intake to help control blood pressure.",
+        );
+      }
+
+      if (c.contains("cholesterol") && fats > 70) {
+        warnings.add(
+          "High fat intake may affect cholesterol levels.",
+        );
+      }
+
+      if (c.contains("kidney") && protein > 100) {
+        warnings.add(
+          "Excess protein intake may stress kidney function.",
+        );
+      }
+    }
+
+    // ---------- MEDICAL VALUE-BASED RULES ----------
+    if (glucose != null && glucose > 140) {
       warnings.add(
-        "High blood sugar detected. Limit sugar and refined carbohydrates.",
+        "Elevated blood glucose detected. Monitor sugar intake.",
       );
     }
 
-    // High blood pressure
-    if (systolicBP != null && systolicBP >= 140) {
+    if (systolicBP != null &&
+        diastolicBP != null &&
+        (systolicBP > 140 || diastolicBP > 90)) {
       warnings.add(
-        "High blood pressure detected. Reduce sodium intake and processed foods.",
+        "High blood pressure detected. Limit sodium intake.",
       );
     }
 
-    // High cholesterol
-    if (cholesterol != null && cholesterol >= 240) {
+    if (cholesterol != null && cholesterol > 200) {
       warnings.add(
-        "High cholesterol detected. Avoid saturated fats and fried foods.",
+        "High cholesterol detected. Prefer low-fat foods.",
+      );
+    }
+
+    if (calories > 3500) {
+      warnings.add(
+        "Very high calorie intake detected. Monitor weight goals.",
       );
     }
 

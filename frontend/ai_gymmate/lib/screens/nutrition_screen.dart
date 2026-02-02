@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'nutrition_input_screen.dart';
+import 'meal_logger_screen.dart';
 
 class NutritionScreen extends StatelessWidget {
   const NutritionScreen({super.key});
@@ -37,6 +38,28 @@ class NutritionScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 32),
+
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const MealLoggerScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.add),
+                label: const Text("Track Your Meals"),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
 
             SizedBox(
               width: double.infinity,

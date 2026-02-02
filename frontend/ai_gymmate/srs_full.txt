@@ -1,0 +1,2135 @@
+AI GymMate: AI-Powered Gym Trainer & Nutrition Assistant App 
+Major project report submitted to CUSAT in partial fulfilment of the requirements for the 
+award of the degree of 
+BACHELOR OF TECHNOLOGY IN COMPUTER SCIENCE & 
+ENGINEERING 
+ 
+ 
+Submitted by, 
+EEVA JOSEPH (20222531) 
+ADITHYA A R (20222506) 
+MERIN JOSEPH (20222540) 
+JOSTIN JUDE (20222536) 
+Under the Guidance of 
+Mrs. Alice Joseph 
+Project Guide 
+Ms. Neethu George 
+Project Guide 
+Dr. Preetha Mathew K 
+Project Coordinator 
+Mrs. Bindu P K 
+Head of the Department, Division of CSE 
+ 
+ 
+Division of Computer Science and Engineering 
+COCHIN UNIVERSITY COLLEGE OF ENGINEERING KUTTANAD 
+ALAPPUZHA 
+
+Division of Computer Science and Engineering 
+COCHIN UNIVERSITY COLLEGE OF ENGINEERING 
+KUTTANAD, ALAPPUZHA  
+ 
+ 
+ 
+ 
+BONAFIDE CERTIFICATE 
+This is to certify that the major project entitled AI GymMate: AI-Powered 
+Gym Trainer & Nutrition Assistant App is a Bonafide report of the work 
+done by EEVA JOSEPH (20222531), ADITHYA A R (20222506), MERIN 
+JOSEPH (20222540) & JOSTIN JUDE (20222536) towards the partial 
+fulfilment of the requirements of the degree of B.Tech in Computer Science 
+and Engineering of Cochin University of Science And Technology. 
+ 
+ 
+ 
+ 
+Mrs. Alice Joseph 
+Project Guide 
+Division of CSE 
+Ms. Neethu George 
+Project Guide 
+Division of CSE 
+ 
+ 
+ 
+ 
+ 
+Dr. Preetha Mathew K 
+Project Coordinator 
+Division of CSE 
+Mrs. Bindu P K 
+Head of Department 
+Division of CSE 
+
+3  
+ACKNOWLEDGEMENT 
+ 
+We are pleased to present our major project titled “AI GymMate : AI-Powered Gym 
+Trainer & Nutrition Assistant App”. We would like to express our sincere gratitude to 
+Dr. Preetha Mathew K, Principal, Cochin University College of Engineering Kuttanad 
+(CUCEK), for providing us with the facilities and support required to successfully 
+complete this project. We extend our heartfelt thanks to M rs. Bindu P K, Associate 
+Professor and Head of the Department of Computer Science and Engineering, for her 
+valuable guidance, motivation, and encouragement throughout the course of this work. 
+We would also like to express our deep appreciation to our Project Coordinator Dr. 
+Preetha Mathew K, Professor, Division of Computer Science and Engineering, for her 
+constant supervision, valuable suggestions, and constructive feedback. A special note of 
+gratitude goes to our Project Guides, Mrs. Alice Joseph and Ms. Neethu George, 
+Assistant Professors, Division of Computer Science and Engineering, for their 
+continuous guidance, timely advice, and encouragement during the preparation and 
+execution of this project. 
+Finally, we thank all the faculty members and staff of the Department of Computer 
+Science and Engineering, CUCEK, for their cooperation, support, and motivation 
+throughout the duration of this project. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4  
+ABSTRACT 
+In modern digital fitness ecosystems, the need for intelligent, personalized, and safety -aware training 
+solutions has become increasingly important due to diverse user fitness levels and underlying medical 
+conditions. This project focuses on the developmen t of AI GymMate, an AI -powered gym trainer and 
+nutrition assistant mobile application that delivers real -time exercise guidance, suggestive workout 
+planning, and nutrition management. The system leverages artificial intelligence, computer vision, and 
+machine learning techniques to analyse user movements through a smartphone camera and provide 
+accurate feedback during exercise execution.  
+AI GymMate ensures safe and effective fitness training by  giving filtered exercise list for users 
+according to their medic al condition, continuously monitoring posture, joint angles, and motion 
+patterns in real time. Based on user performance, fitness goals, and medical risk profiles, the system 
+dynamically adjusts workout intensity, exercise selection, and calorie estimation . In addition to 
+exercise guidance, the application integrates nutrition logging and personalized diet recommendations 
+according to the medical condition to support holistic health management.  
+Features: 
+• Medical Safety and Filtering Layer: Allows users to declare medical conditions and upload reports, 
+enabling risk stratification and filtering safe exercises. 
+• Real-Time Pose Detection and Skeletal Tracking: Uses deep learning –based computer vision 
+models to detect body joints and movement patterns through liv e camera input, enabling accurate 
+posture analysis and exercise monitoring.  
+• Posture Evaluation and Corrective Feedback: Continuously compares detected joint angles with 
+predefined ideal ranges and provides instant visual and textual feedback to correct improper posture 
+and reduce injury risk. 
+• Accurate Repetition Counting and Calorie Estimation: Counts exercise repetitions only when 
+movement thresholds are correctly met and estimates calorie expenditure using amplitude -based, 
+user-weight–dependent calculations. 
+• Suggestive Workout Planning: Automatically suggests workout difficulty, intensity, and exercise 
+sequences based on real-time performance evaluation, progress and fitness goals. 
+• Nutrition Logging and Diet Recommendation: Supports meal tracking, calorie intake analysis, and 
+personalized diet and recipe suggestions aligned with user fitness objectives and medical 
+constraints. 
+• Progress Tracking and Analytics: Provides detailed daily, weekly, and monthly visualizations of 
+workout accuracy, repetition counts,  calories burned and consumed, and overall goal compliance.  
+• Mobile Optimization and On-Device AI Inference: Optimized for Android and iOS platforms using 
+lightweight on -device inference to ensure real -time performance, data privacy, and minimal 
+computational overhead. 
+This project presents a scalable and intelligent mobile fitness solution that integrates exercise 
+monitoring, nutrition management, and medical safety within a unified platform. By offering 
+personalized, adaptive, and medically conscious fitness guidance, AI GymMate enhances user 
+engagement, safety, and long -term health outcomes while reducing dependence on physical trainers 
+and specialized gym equipment. 
+ 
+ 
+5  
+TABLE OF CONTENTS 
+ 
+ 
+1 INTRODUCTION 8 
+1.1 Purpose 8 
+1.2 Scope 9 
+1.3 Definitions, Acronyms and Abbreviations 10 
+1.4 Intended Audience 11 
+1.5 Literature Survey 11-14 
+2 OVERALL DESCRIPTION 15 
+2.1 Product Perspective 15 
+2.2 Product Functions 15 
+2.3 User Characteristics 16 
+2.4 Constraints 16 
+2.5 Assumptions and Dependencies 16 
+2.6 Feasibility Study 16 
+3 PROBLEM SPECIFICATION 17 
+3.1 Existing System 17 
+3.2 Proposed System 17 
+3.3 Advantages of Proposed System 18 
+4 SPECIFIC REQUIREMENTS 19 
+4.1 External Interface Requirements 19 
+4.1.1 User Interfaces 19 
+4.1.2 Hardware Interfaces 19 
+4.1.3 Software Interfaces 19 
+4.2 Functional Requirements 20 
+6  
+4.3 Non-Functional Requirements 20 
+5 SYSTEM FEATURES AND DESIGN 22 
+5.1 System Architecture 22 
+5.2 Use Case Diagram 28 
+5.3 Activity Diagram 32 
+5.3.1 Activity Diagram (User) 32 
+5.3.2 Activity Diagram (Model) 42 
+5.3.2.1 Activity Diagram (Workout Module-Model) 43 
+5.3.2.2 Activity Diagram (Nutrition Module-Model) 47 
+5.3.2.3 Activity Diagram (Progress Tracker Module- Model) 50 
+5.3.2.4 Activity Diagram (Profile/Settings Module- Model) 52 
+5.4 Sequence Diagram 54 
+5.5 Gantt Chart 60 
+6 FUTURE ENHANCEMENTS 62-63 
+7 CONCLUSION 64 
+8 REFERENCES 65 
+7  
+Table Of Figures 
+ 
+ 
+ 
+1 System Architecture 23 
+2 Use Case Diagram 29 
+3 Activity Diagram (Workout Module-User) 33 
+4 Activity Diagram (Nutrition Module-User) 36 
+5 Activity Diagram (Progress Tracker Module-User) 38 
+6 Activity Diagram (Profile/Settings Module-User) 40 
+4 Activity Diagram (Workout Module-Model) 43 
+5 Activity Diagram (Nutrition Module-Model) 47 
+6 Activity Diagram (Progress Tracker 
+Module- Model) 
+50 
+7 Activity Diagram (Profile/Settings Module- 
+Model) 
+52 
+8 Sequence Diagram 55-57 
+9 Gantt Chart 60 
+8  
+Software Requirements Specifications 
+AI GymMate: AI-Powered Gym Trainer & Nutrition Assistant App 
+ 
+1. Introduction 
+1.1 Purpose 
+The purpose of this Software Requirements Specification (SRS) document is to clearly define and describe 
+the objectives, scope, functional features, and system-level requirements of AI  GymMate. An AI -Powered 
+Personal Fitness, Health, and Nutrition Assistant. This document acts as a comprehensive reference for all 
+stakeholders involved in the system’s design, development, implementation, testing, and academ ic 
+evaluation. 
+ 
+The primary objective of AI GymMate is to deliver a safe, intelligent, and personalized virtual fitness 
+coaching experience that adapts dynamically to each user’s physical capabilities, fitness goals, and medical 
+conditions. Unlike conventional fitness applications, AI GymMate integrates real -time pose detection, 
+posture correction, adaptive workout planning, calorie estimation, nutrition management, and medical-risk- 
+aware exercise customization within a single platform. 
+ 
+The system leverages computer vision and machine learning techniques through a custom -trained pose 
+detection model to analyze user movements in real time using a smartphone camera. Based on detected joint 
+angles and motion patterns, the system provides instant posture feedback, accurate repetition counting, and 
+amplitude-based calorie estimation, ensuring both effectiveness and safety during exercise execution.  
+ 
+In addition, AI GymMate  extends beyond standard fitness tracking by incorporating a medical screening 
+and safety layer. Users can declare existing medical conditions such as heart disease, hypertension, diabetes, 
+or cholesterol imbalance, along with severity levels. The system a lso supports optional medical report 
+uploads, enabling conservative risk stratification and safe exercise recommendations. For users with 
+identified medical risks, workouts are pre -adapted and restricted to avoid unsafe movements, high -impact 
+exercises, or excessive intensity. 
+ 
+This SRS ensures a shared understanding of: 
+ 
+ What the system is expected to do and how it should behave under various user conditions, 
+ The functional and non-functional requirements governing exercise, nutrition, and medical safety 
+features, 
+ The technical constraints related to mobile deployment, AI inference, and data security, and 
+ The expectations of both developers and end-users regarding usability, accuracy, and safety. 
+ 
+Through this document, the development team establishes a structured roadmap for system implementation 
+and validation, ensuring that the final product fulfills its intended purpose to make professional -grade, 
+medically safe fitness and nutrition guidance accessible to users through an AI -driven mobile platform. 
+9  
+1.2 Scope 
+The scope of the AI GymMate  project encompasses the design and development of an intelligent mobile 
+application that functions as a personal AI fitness trainer, nutrition assistant, and safety -aware health 
+companion. The system is designed to support both healthy individuals and use rs with underlying medical 
+conditions by providing personalized, adaptive, and risk -conscious recommendations. 
+ 
+The application integrates multiple interconnected modules, including exercise guidance, posture analysis, 
+calorie tracking, nutrition logging, diet and recipe recommendations, progress visualization, and medical 
+adaptation. The scope of the system covers the entire user journey from onboarding and health screening to 
+real-time exercise execution, nutritional management, and long -term progress tracking. 
+ 
+Key functional elements within the scope of AI GymMate include: 
+ 
+ User Onboarding and Medical Profiling, collecting personal attributes (age, height, weight), fitness 
+goals, and disease -related information, with optional medical report uploads and user consent for 
+handling protected health data.  
+ Medical Safety and Restriction Layer, identifying risk levels based on questionnaires and uploaded 
+reports, restricting unsafe exercises, and recommending physician clearance when required.  
+ Filters Exercise List based on user’s medical condition (Healthy or At -risk). 
+ Real-Time Pose Detection and Skeleton Tracking, using deep learning models to identify human body 
+joints and movement angles from live camera input.  
+ Posture Evaluation and Feedback, continuously comparing detected joint angles with predefined ideal 
+ranges to deliver real-time corrective warnings and positive reinforcement during exercise execution.  
+ Accurate Rep Counting and Calorie Estimation, ensuring repetitions are counted only when correct 
+movement thresholds are met, and calories are computed using amplitude -scaled, user -weight- 
+dependent energy formulas. 
+ Suggestive Workout Planning, where exercise difficulty and intensity are dynamically adjusted after 
+performance evaluation. 
+ Nutrition Logging and Diet Recommendation, allowing users to log meals, track calories consumed, and 
+receive personalized diet plans and recipe suggestions aligned with fitness goals and medical profiles.  
+ Progress Tracking and Analytics, visualizing daily, weekly, and monthly trends related to calories 
+burned, calories consumed, exercise accuracy, repetition counts, and goal compliance.  
+The system is optimized for deployment on Android and iOS smartphones, requiring only a front -facing 
+camera and minimal computational resources. On-device inference using TensorFlow Lite ensures real-time 
+performance while maintaining user privacy.  
+ 
+By integrating artificial intelligence, computer vision, nutrition analytics, and medical safety principles 
+within a single mobile application, AI GymMate aims to democratize access to intelligent, personalized, and 
+medically safe fitness guidance, reducing dependence on physical trainers or specialized gym equipment 
+while promoting long-term health and wellness.  
+10  
+1.3 Definitions, Acronyms, and Abbreviations 
+ 
+ 
+Term / Acronym Definition / Description 
+SRS Software Requirements Specification – a formal document that 
+describes the functional and non -functional requirements of a 
+software system. 
+AI Artificial Intelligence – the capability of a computer system to 
+perform tasks that normally require human intelligence.  
+CNN Convolutional Neural Network – a deep learning model 
+commonly used for image and video processing tasks. 
+MLP Multi-Layer Perceptron – a type of feedforward artificial neural 
+network used for classification and prediction.  
+BMR Basal Metabolic Rate – the minimum number of calories required 
+by the body to maintain basic physiological functions at rest. 
+TDEE Total Daily Energy Expenditure – the total amount of energy 
+expended by the body in a day, including physical activity.  
+OpenCV Open Source Computer Vision Library – an open-source library 
+used for real-time image and video processing.  
+TFLite TensorFlow Lite – a lightweight machine learning framework 
+optimized for mobile and embedded devices.  
+ONNX Open Neural Network Exchange – a standard format for 
+representing and sharing machine learning models across 
+platforms. 
+JSON JavaScript Object Notation – a lightweight data-interchange 
+format used for structured data storage and communication.  
+CVAT Computer Vision Annotation Tool – a web-based tool used for 
+annotating and labelling visual datasets.  
+SQLite Structured Query Language Lite – a lightweight, embedded 
+relational database used for local data storage.  
+Firebase Firebase – a cloud-based platform providing backend services 
+such as authentication and data storage.  
+Firebase Cloud Firestore Firestore Cloud Firestore – a NoSQL cloud database service 
+provided by Firebase for real -time data synchronization.  
+OCR Optical Character Recognition – a technology used to convert 
+scanned documents or images into machine -readable text. 
+ECG Electrocardiogram – a medical test that records the electrical 
+activity of the heart. 
+FR Functional Requirements – specifications that define what the 
+system should do. 
+NFR Non-Functional Requirements – specifications that define system 
+quality attributes such as performance and security.  
+11  
+1.4 Intended Audience 
+The SRS is intended for the following groups: 
+ 
+1. Developers and Designers 
+o To understand functional behavior, interfaces, and integration logic. 
+o To guide implementation and testing. 
+2. Project Supervisors and Evaluators 
+o To assess the project’s technical completeness and feasibility. 
+3. Test Engineers / QA Team 
+o To develop test cases and verify system compliance with specifications. 
+4. End Users (Fitness Enthusiasts) 
+o To understand the app’s functionalities and usage flow. 
+5. Future Developers and Researchers 
+o To extend, upgrade, or replicate the system using this document as a reference. 
+1.5 Literature Survey 
+AI GymMate is developed by integrating established research across computer vision,  filtered exercise list, 
+human pose estimation, fitness analytics, nutritional science, mobile AI  deployment, and health -aware 
+recommendation sy stems. The system builds upon prior academic studies, frameworks, and tools, each 
+contributing core ideas that shape the functionality and safety of the proposed application.  
+ 
+1. Pose Estimation and Exercise Tracking 
+ 
+1.1 OpenPose and Real-Time Human Keypoint Detection [1] 
+ 
+Idea Introduced: OpenPose introduced a robust framework for real-time multi-person human pose estimation 
+using Part Affinity Fields (PAFs), enabling accurate detection of body joints such as shoulders, elbows, hips, 
+and knees even under complex movement scenarios [1]. This approach established the foundation for modern 
+pose-based activity recognition systems and remains a highly cited benchmark in computer vision research 
+[1]. 
+ 
+Use in AI GymMate: AI GymMate adopts the fundamental skeletal  key point detection concepts proposed 
+by OpenPose [1] to track user movements during exercise sessions. The detection of key joints enables 
+critical fitness-related functionalities such as:  
+ 
+ Repetition counting 
+ Posture correctness validation 
+ Movement phase identification 
+ Exercise execution analysis 
+ 
+These core exercise-tracking capabilities are directly dependent on the pose-estimation principles introduced 
+in [1]. 
+ 
+AI GymMate’s Improvement: While OpenPose focuses on generalized pose detection, AI GymM ate 
+customizes this approach for fitness -specific analysis and mobile deployment. By integrating optimized 
+TensorFlow Lite models [3] and fitness evaluation strategies explored in recent AI-driven workout systems 
+[4], AI GymMate achieves real -time posture correction and calorie estimation in a mobile environment, 
+extending beyond the scope of the original OpenPose framework [1][4].  
+12  
+2. Nutrition Science and Metabolic Calculations 
+ 
+2.1 WHO Guidelines for Physical Activity and Nutrition [2] 
+ 
+Idea Introduced: The World Health Organization (WHO) established standardized metabolic formulas such 
+as Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE), along with global guidelines 
+for physical activity and nutritional balance [2]. These standards ensure medical reliability and demographic 
+inclusiveness in health-related applications [2]. 
+ 
+Use in AI GymMate: AI GymMate uses WHO -defined BMR and TDEE formulas [2] to compute daily 
+calorie requirements and evaluate calorie balance. These calculations form the basis for:  
+ 
+ Diet recommendations 
+ Calorie deficit or surplus analysis 
+ Validation of exercise-based calorie burn 
+ 
+Ensuring that nutritional suggestions remain medically aligned and scientifically validated [2]. 
+ 
+AI GymMate’s Improvement: Unlike static calorie calculators, AI GymMate dynamically integrates WHO 
+metabolic standards [2] with pose -based exercise intensity, real -time calorie burn estimation  using joint 
+angles, and suggestive diet planning mechanisms inspired by intelligent nutrition systems [4]. This integration 
+enables personalized nutrition and recipe recommendations that evolve with user performance and health 
+conditions [1][2][4]. 
+ 
+3. Mobile AI and On-Device Execution 
+ 
+3.1 TensorFlow Lite for Mobile Deployment [3] 
+ 
+Idea Introduced: TensorFlow Lite (TFLite) was developed to enable efficient execution of deep learning 
+models on mobile and embedded devices, offering model quantization, reduced memory usage, and low - 
+latency inference [3]. It supports real-time image-based tasks such as pose detection and classification [3].  
+ 
+Use in AI GymMate: AI GymMate deploys its pose estimation, repetition detection, and calorie estimation 
+models using TensorFlow Lite [3], allowing the system to:  
+ 
+ Perform real-time inference during workouts 
+ Operate with minimal latency 
+ Function offline without continuous cloud connectivity 
+ This ensures smooth user experience and data privacy during exercise sessions [3][5]. 
+ 
+AI GymMate’s Improvement: By combining TensorFlow Lite inference [3] with optimized OpenCV-based 
+video preprocessing [5], AI GymMate  creates a hybrid execution pipeline capable of handling fast and 
+repetitive exercise movements. This design builds upon existing mobile AI frameworks while improving 
+robustness under real-world fitness conditions [3][5].  
+ 
+4. AI-Based Fitness and Posture Correction 
+ 
+4.1 Deep Learning Fitness Coaching Models [4] 
+ 
+Idea Introduced: Sharma and Kumar demonstrated how deep learning models can be applied to fitness 
+coaching by detecting posture deviations and generating automated corrective feedback during workouts [4]. 
+Their research validated the feasibility of AI -driven posture correction for common exercises [4].  
+13  
+Use in AI GymMate: AI GymMate incorporates similar concepts by analyzing joint alignment and posture 
+accuracy using pose estimation principles derived from [1] and feedback mechanisms inspired by [4]. This 
+enables the system to provide real -time positive and corrective feedback during exercises such as squats, 
+lunges, and push-ups. 
+ 
+AI GymMate’s Improvement: AI GymMate extends prior research by integrating: 
+ 
+ OpenPose-inspired joint estimation [1] 
+ Mobile-friendly inference using TensorFlow Lite [3] 
+ Real-time feedback mechanisms from fitness-AI studies [4] 
+ Nutrition and calorie analysis grounded in WHO standards [2] 
+ 
+Together, these enhancements allow GymMate to function as a comprehensive virtual fitness coach, 
+addressing posture, performance, and energy expenditure simultaneously [1][2][4].  
+ 
+5. Computer Vision Preprocessing and Video Analytics 
+ 
+5.1 OpenCV for Real-Time Frame Analysis [5] 
+ 
+Idea Introduced: OpenCV provides highly optimized tools for video capture, noise reduction, motion 
+smoothing, and geometric transformations, enabling reliable deployment of vision -based systems on 
+consumer devices [5]. 
+ 
+Use in AI GymMate: AI GymMate uses OpenCV to: 
+ 
+ Stabilize video frames before pose inference [5] 
+ Handle lighting variations and noise 
+ Reduce motion blur 
+ Prepare frames for TensorFlow Lite inference [3] 
+ This preprocessing improves pose detection accuracy under diverse real-world conditions [5]. 
+ 
+AI GymMate’s Improvement: By merging OpenCV pre-processing techniques [5] with fitness-focused pose 
+estimation research [1][4], AI GymMate delivers an optimized end -to-end pipeline suitable for real -time 
+mobile fitness analysis [3][5]. 
+ 
+6. Model Training Frameworks 
+ 
+6.1 PyTorch for Dataset Training and Fine-Tuning [6] 
+ 
+Idea Introduced: PyTorch  enables flexible and efficient training of deep learning models through dynamic 
+computation graphs, making it suitable for experimentation and fine -tuning [6]. 
+ 
+Use in AI GymMate: AI GymMate employs PyTorch during the model development phase for: 
+ 
+ Training pose estimation models [6] 
+ Fine-tuning calorie estimation networks 
+ Experimentation with annotated fitness datasets [7] 
+ 
+AI GymMate’s Improvement: After training in PyTorch  [6], models are converted into TensorFlow Lite 
+format [3] and optimized for mobile deployment. This hybrid approach combines PyTorch’s training 
+flexibility with TensorFlow Lite’s deployment efficiency [3][6].  
+14  
+7. Dataset Annotation and Labelling Tools 
+ 
+7.1 CVAT for Key point and Fitness Dataset Annotation [7] 
+ 
+Idea Introduced: CVAT provides tools for precise annotation of visual datasets, including pose keypoints 
+and activity segments, which are essential for supervised learning in computer vision tasks [7].  
+ 
+Use in AI GymMate: AI GymMate uses CVAT to annotate: 
+ 
+ Full-body pose key points for exercise movements [7] 
+ Correct and incorrect posture samples 
+ Repetition boundaries for exercise detection 
+ 
+AI GymMate’s Improvement: AI GymMate enhances CVAT-based annotations [7] by incorporating fitness- 
+oriented labelling strategies inspired by pose estimation [1] and AI coaching systems [4], improving the 
+robustness of training data used in exercise analysis and calorie estimation models [1][2][4][7].  
+15  
+2. Overall Description 
+2.1 Product Perspective 
+ 
+AI GymMate  is a stand -alone mobile application that combines computer -vision-based exercise tracking, 
+intelligent nutrition assistance, and a medical -aware safety layer to provide personalized fitness guidance. 
+The system is designed as a modular architecture where each component operates independently while 
+contributing to a unified user experience.  
+ 
+The system consists of the following core modules: 
+ 
+1. Frontend (Flutter App) – Provides the user interface for onboarding, medical questionnaires, camera - 
+based exercise tracking, real-time feedback display, nutrition logging, progress visualization, provides 
+user with filtered exercise list according to their medical report and settings management.  
+2. Backend (Python + TFLite) – Handles pose estimation, posture evaluation, r epetition counting, calorie 
+estimation, adaptive workout logic, nutrition analysis, filters out the exercise list according to the user’s 
+medical report, and medical-risk-based exercise filtering using on -device machine learning models.  
+3. Database (SQLite + Firestore) – Stores user profiles, medical declarations, uploaded report metadata, 
+workout logs, calorie records, and nutrition data locally or in the cloud.  
+ 
+The system uses the device camera as the primary sensor for pose estimation and relies on on-device machine 
+learning models for real -time inference, ensuring data privacy and offline functionality. Cloud 
+synchronization through Firebase enables secure data backup and cross -session continuity while keeping 
+sensitive medical data encrypted.  
+ 
+2.2 Product Functions 
+ 
+1. User Authentication & Profile Setup: Secure login and profile creation with physical attributes, fitness 
+goals, and medical condition declaration.  
+ 
+2. Medical Screening & Risk Assessment: Collection of disease information (heart disease, BP, di abetes, 
+cholesterol) with severity levels and optional medical report upload.  
+ 
+3. Filtered Exercise List: User receives filtered exercise list according to their medical profile (Healthy or 
+At-risk). 
+ 
+4. Real-Time Pose Detection: Live skeletal key point detection using on -device CNN models through the 
+device camera. 
+ 
+5. Posture Evaluation & Real -Time Feedback: Continuous posture analysis with instant corrective and 
+motivational feedback during exercise execution.  
+ 
+6. Repetition Counting & Calorie Estimation: Ac curate repetition counting and continuous calorie 
+calculation based on joint angles, movement quality, duration, and user profile.  
+ 
+7. Suggestive Workout Generation: Performance-based exercise suggestion post workout  for users  
+according to their progress and medical conditions. 
+ 
+8. Nutrition Assistant: Calculation of BMR/TDEE and generation of daily calorie targets based on goals and 
+health profile. 
+ 
+9. Meal Logging, Diet & Recipe Recommendation: Manual meal logging, calorie tracking, and personalized 
+diet and recipe suggestions aligned with user goals and medical conditions.  
+16  
+10. Progress Dashboard: Visualization of workout performance, calorie burn, calorie intake, and goal 
+compliance over time. 
+ 
+11. Notifications & Reminders: Alerts for workouts, hydration, meal logging, and rest periods to promote 
+consistency and safety. 
+ 
+2.3 User Characteristics 
+ 
+User Type Description Skill Level 
+Beginner Requires step-by-step posture guidance and 
+simplified workouts. 
+Low 
+Intermediate Seeks adaptive workouts, calorie tracking, 
+and progress analytics. 
+Medium 
+Fitness Enthusiast Uses detailed performance data to optimize 
+fitness goals. 
+High 
+Medically At-Risk User Requires safe, workouts with restrictions and 
+monitoring. 
+Variable 
+Admin Uploads and manages exercise datasets and 
+model-training resources. 
+Advanced 
+ 
+All users are expected to have basic smartphone literacy. No prior technical expertise is required, and no  
+advanced fitness knowledge is assumed.  
+ 
+2.4 Constraints 
+ 
+ Hardware Constraints: Minimum 4 GB RAM and a 720p front-facing camera for real-time pose tracking. 
+ Software Constraints: Machine learning models must be pre-trained and deployed using TensorFlow Lite 
+for mobile compatibility. 
+ Medical & Ethical Constraints: The system must not provide medical diagnosis; fe edback must remain 
+encouraging, conservative, and safety-focused. All medical data must be securely stored and encrypted. 
+ Performance Constraints: Pose detection latency ≤ 300 ms per frame; posture evaluation and feedback 
+accuracy ≥ 90%. 
+ 
+2.5 Assumptions and Dependencies 
+ 
+ Users will maintain full-body visibility during exercise sessions under adequate lighting conditions. 
+ Profile and medical information entered by users is assumed to be accurate. 
+ Uploaded medical reports are assumed to be valid and readable for text extraction. 
+ Required libraries such as TensorFlow Lite and OpenCV are available on the deployment environment. 
+ Firebase Firestore is used only for optional data synchronization and authentication services. 
+ 
+2.6 Feasibility Study 
+ 
+ Technical Feasibility: The system uses open -source frameworks compatible with modern smartphones. 
+Pose estimation, calorie estimation, and feedback models can be optimized for efficient TensorFlow Lite 
+deployment. 
+ Operational Feasibility: The application provides a guided and intuitive interface suitable for beginners, 
+medically at-risk users, and fitness enthusiasts. Offline functionality ensures usability without continuous 
+internet access. 
+ Economic Feasibility: The system does not require paid APIs, external sensors, or specialized hardware. 
+Development and deployment rely entirely on free and open -source technologies, making the solution 
+cost-effective. 
+17  
+3. Problem Specification 
+3.1 Existing System 
+ 
+Conventional fitness tracking applications primarily rely on manual user inputs or wearable devices such as 
+smartwatches and fitness bands. These systems mainly track surface-level metrics like step count, duration, 
+or estimated calories burned, without understanding how exercises are actually performed. Most applications 
+lack the capability to analyse exercise posture or form in real time, increasing the risk of improper workouts 
+and potential injuries. 
+Diet tracking in existing systems involves manual logging without real -time guidance, personalization or 
+health-aware analysis, often resulting in inconsistent nutrition records. Moreover, these applications generally 
+provide generic and static workout plans that do not adapt to user performance, physical capability, or health 
+conditions. Another  major limitation is the absence of medical awareness. Existing fitness apps do not 
+account for users with medical conditions such  as heart disease, diabetes, hypertension, or cholesterol 
+imbalance, and they fail to enforce safety-based restrictions or conservative exercise recommendations.  
+Thus, existing systems fail to deliver: 
+ 
+ Filtered exercise list based on health status. 
+ Real-time pose evaluation and corrective feedback. 
+ Performance-aware and health-aware adaptive training. 
+ Safe workout personalization for medically at-risk users. 
+ Integrated fitness, nutrition, and medical consideration in a single AI-powered system. 
+ 
+3.2 Proposed System 
+ 
+AI GymMate  proposes a comprehensive AI -driven fitness and nutrition assistant that overcomes the 
+limitations of traditional fitness applications by integrating computer vision, machine learning, nutrition 
+science, and medical risk adaptation into a single platform.  
+ 
+The system provides users with: 
+ 
+ Filtered exercise list for users with medical conditions. 
+ Real-time workout supervision using camera-based pose detection models. 
+ Instant posture correction and motivational feedback during exercise. 
+ Personalized nutrition guidance, diet plans, and recipe recommendations according to medical conditions. 
+Users with declared or detected medical risks, exercises are pre-filtered and intensity -controlled to ensure 
+safety before the session begins. When a user initiates an exercise session, the device camera captures live 
+video frames that are processed by an on-device pose detection model. The system identifies key body joints 
+and continuously evaluates posture accuracy. Based on deviations from reference postures, the feed back 
+engine generates real-time corrective messages such as “Straighten your back” or “Lower your hips.”  
+ 
+Repetition count, posture accuracy, movement amplitude  for effective calorie estimation based on joint 
+angle, and session duration are recorded to calculate calories burned and assess performance.  
+ 
+In parallel, the nutrition assistant computes daily caloric needs using BMR and TDEE values, tracks calories 
+consumed through meal logging, and recommends diets and recipes aligned with user goals and hea lth 
+profiles. 
+ 
+Through this integration of AI-based vision analysis, suggestive exercise planning, nutrition management, 
+and medical safety awareness, AI GymMate delivers an interactive, personalized, and safe wellness solution. 
+18  
+ 
+3.3 Advantages of the Proposed System 
+ 
+ Accessibility and Automation: Eliminates the need for wearable devices or manual exercise tracking by 
+using camera-based AI analysis. 
+ Medical-Aware Personalization and Filtering of exercise list: Suggests workouts and restricts unsafe 
+exercises for users with medical conditions, improving safety.  
+ Real-Time Accuracy and Feedback: Provides instant posture correction and precise repetition counting 
+using CNN-based pose estimation. 
+ Holistic Health Management: Integrates exercise monitoring, calorie estimation based on joint angles, 
+nutrition logging, and diet recommendations  according to medical conditions in one platform. 
+ Privacy and Offline Functionality: On -device processing ensures data privacy and allows uninterrupted 
+usage without constant internet access. 
+ Motivation and User Engagement: Real-time feedback, progress tracking, and reminders help users stay 
+consistent and motivated. 
+19  
+4. Specific Requirements 
+4.1 External Interface Requirements 
+ 
+The External Interface Requirements section defines how the system communicates with users, devices, and 
+external software components. It specifies the design of  the user interface, the  hardware needed for smooth 
+operation, and the software tools and libraries  that support system functions. These requirements ensure 
+seamless interaction between the mobile application, backend services, camera and network hardware, and 
+other integrated components, enabling consistent performance, medical safety, and a smooth user experience. 
+ 
+4.1.1 User Interfaces 
+ 
+The mobile interface is built using Flutter, featuring a clean and interactive design with the following 
+sections: 
+ 
+ Home Screen: Displays overall fitness status, active goals, and navigation options to start workouts, 
+access nutrition, view progress, or manage profile settings.  
+ Medical Profile & Screening Module: Allows users to declare medical conditions, select severity levels, 
+upload medical reports, and review safety recommendations.  
+ Workout Module: Shows filtered exercise list, live camera feed with pose skeleton overlay, real -time 
+rep count, calorie burn display, and posture feedback messages.  
+ Nutrition Module: Enables meal logging, calorie intake tracking, diet plans, and AI -generated recipe 
+suggestions based on goals and medical profile. 
+ Progress Dashboard: Displays visual charts for repetitions completed, posture accuracy, calories burned, 
+calories consumed, and goal compliance.  
+ Settings&Profile: Manages user information, fitness goals, consent for medical data usage, notification 
+preferences, and privacy controls.  
+ 
+Features: 
+ 
+ Touch-based controls with camera access and theme customization. 
+ Filtered exercise list based on health profile. 
+ Real-time feedback overlay (e.g., “Straighten your spine”, “Lift your arms higher”). 
+ Safety alerts for improper posture, lighting issues, or incomplete medical/profile data. 
+ 
+4.1.2 Hardware Interfaces 
+ 
+ Smartphone Tablet: Minimum quad-core CPU, 4 GB RAM, and 720p front-facing camera for real-time 
+pose tracking. 
+ Development Machine: GPU-enabled system for training, testing, and optimizing machine learning 
+models. 
+ Network: Optional Wi-Fi or mobile data for cloud synchronization and report uploads; offline mode 
+supported for workouts and core features.  
+ 
+4.1.3 Software Interfaces 
+ 
+ Frontend: Flutter (Dart) 
+ Backend: Python 3.10 with TensorFlow Lite, OpenCV, scikit-learn 
+ Database: SQLite (local storage), Firebase Firestore (cloud synchronization) 
+ Visualization: Matplotlib for analytics and progress charts 
+ Annotation Tool: CVAT for pose and exercise dataset preparation 
+20  
+ OCR Engine: Used for extracting text from uploaded medical reports 
+ 
+4.2 Functional Requirements 
+ 
+1. User Authentication & Profile Setup 
+o Users register with secure credentials and enter physical, fitness, and medical profile data. 
+o Data is stored locally with optional encrypted cloud synchronization. 
+2. Medical Screening & Risk Classification 
+o Users declare medical conditions and severity levels or upload medical reports. 
+o The system classifies users into LOW, MEDIUM, or HIGH risk categories and the model filters the 
+exercise list with respect to the severity. 
+3. Pose Detection and Tracking 
+o CNN-based model detects body key points in real time (latency < 300 ms). 
+o Outputs joint coordinates and confidence values. 
+4. Posture Feedback Generation 
+o The system evaluates posture correctness and provides real-time corrective or motivational feedback. 
+o Warning feedback is generated for unsafe movements, especially for medically at-risk users. 
+5. Repetition Counting & Calorie Estimation 
+o Repetitions are counted only when correct posture thresholds are met. 
+o Calories burned are calculated continuously based on movement quality, duration, and user profile. 
+6. Workout Logging and Adaptive Planning 
+o Records repetitions, accuracy, and session duration. 
+o Adapts future workouts based on performance and applies pre-restricted exercise lists for medically at- 
+risk users. 
+7. Nutrition Computation and Recommendation 
+o Calculates BMR and TDEE using validated formulas. 
+o Generates daily calorie targets considering fitness goals and medical conditions. 
+8. Meal Logging, Diet & Recipe Recommendation 
+o Allows users to log meals and track calorie intake. 
+o Recommends diets and recipes aligned with user goals and health profile. 
+9. Visualization and Progress Reports 
+o Generates bar and line charts for exercise performance, calorie balance, and long-term progress. 
+10. Notifications and Safety Alerts 
+o Sends reminders for workouts, meals, hydration, and rest periods. 
+o Displays safety alerts for improper posture or medically unsafe activity. 
+ 
+4.3 Non-Functional Requirements 
+ 
+The non-functional requirements define the quality, performance, safety, and reliability standards of  the AI 
+GymMate system. 
+Performance 
+The system ensures real -time pose detection with a latency of less than 300 ms  per frame and nutrition 
+computations within 1 second. It operates smoothly on smartphones with at least 4 GB RAM and a 720p 
+camera. 
+Security 
+User data, including personal profiles and medical information, is securely stored using encryption. All cloud 
+communications use HTTPS/TLS, and sensitive medical data is access -controlled. 
+Reliability 
+The system provides stable performance with automatic recovery from interruptions and maintains at least 
+99% uptime during normal operation  
+21  
+Usability 
+The application features an intuitive interface with clear guidance, making it accessible to beginners, fitness 
+enthusiasts, and medically at-risk users. 
+Scalability 
+The architecture supports future enhancements such as additional exercises, medical conditions, and  model 
+upgrades without major redesign.  
+Portability 
+The application runs efficiently on both Android and iOS platforms and supports deployment across a wide 
+range of mobile devices. 
+Maintainability 
+Modular architecture and clear documentation enable easy debugging, updates, and long-term maintenance. 
+Privacy and Ethics 
+All feedback remains positive and non -judgmental. Medical data handling follows ethical guidelines, and 
+the system does not provide medical diagnosis, only safety -aware recommendations.  
+22  
+5. System Features and Design 
+The System Features and Design section provides a high -level overview of the major capabilities and 
+architectural structure of AI GymMate, incorporating fitness monitoring, n utrition assistance, real -time 
+feedback, and medical safety adaptation [11]. The system is designed around modular components that work 
+together to deliver a personalized, safe, and intelligent fitness experience. Emphasis is placed on real -time 
+responsiveness, modularity, scalability, and health-aware decision-making, ensuring the application remains 
+efficient, extensible, and user-friendly. 
+5.1 System Architecture 
+5.1.1 Overview 
+ 
+The architecture of AI GymMate follows a modular layered design, separating the mobile user interface, AI 
+processing units, medical safety logic, and data management services. Each module operates independently 
+but communicates through well -defined interfaces, ensuring scalability and maintainability.  
+Core architectural components  include the Medical Screening & Safety Layer, Workout Module, Nutrition 
+Module, Adaptive Engine, User Profile & Goal Module, and Data & Analytics Module, all orchestrated 
+through the central User Interface. This architecture enables adapted workout lists for medically at-risk users, 
+real-time pose-based feedback, intelligent  diet and recipe generation, and long-term progress analysis. 
+23  
+System Architecture 
+ 
+ 
+ 
+ 
+Fig 5.1 System Architecture of AI GymMate 
+
+24  
+5.1.2 High-Level System Flow 
+ 
+Admin / User → Frontend (User Interface) → Medical Screening & Risk Assessment → Backend 
+(Workout Module / Nutrition Module / Adaptive Engine) → Data & Analytics → Local Storage  / Cloud 
+Synchronization 
+ 
+The flow begins when the user completes onboarding or initiates a workout or nutrition task. User inputs 
+basic information, goals, medical information, and live camera data are processed by backend AI modules. 
+The results—including filtered exercise list,  posture feedback, calorie estimates, diet plans, and safety 
+alerts—are returned to the frontend for real -time interaction and visualization.  
+ 
+5.1.3 Component Overview 
+ 
+5.1.3.1 User 
+ 
+The User is the central entity of the AI GymMa te system. Through an intuitive mobile interface, users 
+perform exercises, log nutrition, upload medical reports, and track progress.  
+ 
+Functions: 
+ 
+ Provides personal details, fitness goals, medical condition information and medical reports. 
+ Selects exercise from filtered exercise list. 
+ Performs exercises while receiving real-time posture and safety feedback. 
+ Logs meals and views diet plans and recipes according to medical conditions. 
+ Monitors fitness and nutrition progress through analytics dashboards. 
+ Experiences adaptive system behavior based on performance and health profile. 
+ 
+5.1.3.2 User Interface (Frontend Layer) 
+ 
+The User Interface serves as the interaction layer between users and AI -driven backend components. It is 
+implemented using a cross -platform mobile framework to ensure consistency and responsiveness.  
+ 
+Subcomponents: 
+ 
+ Home Screen: Navigation hub for Workout, Nutrition, Progress, and Profile. 
+ Medical Profile Screen: Medical questionnaire, severity selection, and report upload. 
+ Workout Screen: Filtered Exercise, Live camera feed, skeleton overlay, rep count, calorie burn, posture 
+feedback and Suggestive exercise difficulty provider post workout according to health profile. 
+ Nutrition Screen: Diet plans and recipe suggestions according to medical conditions , and meal logging. 
+ Progress Tracker: Visual analytics for fitness and nutrition trends. 
+ Settings/Profile: User preferences, goals, consent, and privacy settings. 
+ Security & Communication: 
+o Secure HTTPS communication. 
+o Token-based authentication. 
+o Real-time updates via API communication with backend modules. 
+ 
+5.1.3.3 Workout Module 
+ 
+The Workout Module manages filtered exercise list, real-time exercise execution and analysis using computer 
+vision.  
+ 
+ 
+25  
+Subcomponents: 
+ Exercise Selector: Filters exercises based on fitness level and medical risk. 
+ Camera Feed: Captures live exercise video. 
+ Pose Detection Engine: Detects body key points using on-device AI models. 
+ Posture Feedback Engine: Generates corrective and motivational feedback. 
+ Rep Counter: Counts repetitions only when correct posture is achieved. 
+ Calorie Estimator: Computes calories burned using movement amplitude, duration, and user profile. 
+ Session Controller: Starts, pauses, and stops workout sessions. 
+ Integration: Closely interacts with the Medical Safety Layer, Adaptive Engine, and Progress Tracker. 
+ 
+5.1.3.4 Medical Screening & Safety Layer 
+ 
+This module ensures user safety by incorporating health awareness into workout planning. Subcomponents: 
+ Medical Questionnaire Processor: Handles disease selection and severity levels. 
+ Report Analysis Module: Extracts text from uploaded medical reports using OCR. 
+ Risk Classification Engine: Categorizes users into LOW, MEDIUM, or HIGH risk groups. 
+ Exercise Restriction Manager: Blocks or modifies unsafe exercises for at-risk users. 
+Function: Filters exercise list, enforces safety constraints, and prevents high-risk exercise execution. 
+ 
+5.1.3.5 Nutrition Module 
+ 
+The Nutrition Module manages dietary planning according to medical conditions  and calorie tracking.  
+Subcomponents: 
+ Diet Plan Generator: Creates personalized diet plans based on goals and health profile. 
+ Meal Recommender: Suggests food items aligned with calorie targets. 
+ Recipe Module: Provides recipes with nutritional breakdown. 
+ Nutrition Logger: Records meals and calorie intake from a drop down list. 
+ Calorie Intake Analyzer: Compares consumed calories against targets. 
+ 
+5.1.3.6 Suggestive Engine 
+ 
+The Suggestive Engine enables intelligent personalization. 
+Subcomponents: 
+ Suggestive Workout Planner: Adjusts workouts to do post exercise session based on performance and 
+safety constraints. 
+ 
+Functions: 
+ 
+ Enhances personalization. 
+ Prevents overexertion. 
+ Maintains balanced workout progression. 
+ 
+ 
+ 
+26  
+5.1.3.7 User Profile & Goal Module 
+ 
+This module stores user-specific details and fitness objectives. 
+Subcomponents: 
+ User Goal Manager: Handles goals such as weight loss, gain, or fitness maintenance. 
+ 
+Functions: 
+ 
+ Feeds data to Work out and Nutrition modules. 
+ Enables consistent goal-oriented recommendations. 
+5.1.3.8 Data & Analytics Module 
+ 
+Handles secure data storage and visualization. 
+Subcomponents: 
+ Local Storage: Offline session data. 
+ Cloud Sync: Secure backup and multi-session continuity. 
+Functions: 
+ 
+ Progress visualization. 
+ Trend analysis. 
+ Performance reporting. 
+ 
+5.1.4 Operational & Security Considerations 
+Data Security: 
+ Encrypted communication (TLS/HTTPS). 
+ Encrypted storage of medical data. 
+ No permanent storage of camera frames. 
+ Performance Optimization: 
+ Lightweight on-device AI models. 
+ Cached exercise and nutrition data. 
+ 
+Scalability: 
+ 
+ Modular backend components. 
+ Supports future feature expansion. 
+ 
+Data Privacy: 
+ 
+ Medical data handled with explicit user consent. 
+ No biometric data used beyond session processing. 
+ 
+ 
+27  
+Monitoring & Logging: 
+ 
+ Tracks latency, errors, and model accuracy. 
+ Supports continuous improvement and model updates. 
+28  
+5.2 Use Case Diagram 
+The Use Case Diagram illustrates the interactions between the User and the AI Model –driven AI GymMate  
+system, highlighting the functional capabilities available within the system boundary [9]. It represents how 
+the user interacts with the intelligent system to select from the filtered exercise list, perform workouts, receive 
+real-time feedback, receive adjusted workout plans to do post normal workout session based on performance 
+according to their progress, manage nutrition, and monitor progress, while the AI Model autonomously 
+handles analysis, suggestion, and recommendations. 
+ 
+Purpose: 
+ 
+The purpose of the Use Case Diagram is to provide a clear and user -centered representation of how AI 
+GymMate functions as an intelligent fitness and nutrition assistant. The diagram demonstrates how computer 
+vision models, suggestive AI logic, and nutritio n engines work together behind the scenes to support safe, 
+personalized, and real -time fitness guidance. It simplifies complex AI processes into understandable 
+interactions, bridging the gap between technical implementation and real -world usage. 
+29  
+Use Case Diagram 
+ 
+ 
+Fig 5.2 Use Case Diagram of AI GymMate 
+
+30  
+Main Components 
+ 
+Actor – User: 
+The User represents an individual who interacts with the AI GymMate application to select exercise, perform 
+workouts, log nutrition, receive feedback,  receive suggestive workout planning  and track progress. The user 
+directly controls the application while benefiting from automated intelligence provided by the AI  Model. 
+ 
+Actor – AI Model: 
+The AI Model represents the intelligent backend of the system responsible for  filtering exercise list,  pose 
+detection, posture evaluation, calorie estimation based on joint angles, suggestive workout planning, medical-
+risk-based restriction, and nutrition recommendations  with respect to medical conditions . This actor operates 
+automatically without manual intervention.  
+ 
+System – AI GymMate: 
+The AI GymMate system forms the system boundary enclosing all use cases. It integrates the User Interface 
+with AI-driven modules such as workout analysis, medical safety adaptation, nutrition planning, and progress 
+analytics. 
+ 
+Primary Use Cases (User): 
+ Register / Login:  Allows the user to securely create an account or log in to access personalized fitness 
+and nutrition services. 
+ Setup Profile: Enables the user to enter personal details such as age, height, weight, and activity level. 
+ Medical Screening: Allows the user to declare medical conditions and select severity levels for safety 
+assessment. 
+ Upload Medical Reports: Enables optional upload of health reports to assist the system in conservative 
+risk evaluation. 
+ Set Fitness Goal: Allows the user to choose goals such as weight loss, weight gain, or staying fit. 
+ Select Exercise: The user selects exercises from a system-approved list filtered based on fitness level and 
+medical safety. 
+ Start Workout Session: Initiates real-time exercise tracking using the device camera. 
+ Receive Real-Time Posture Feedback: Displays instant corrective or motivational feedback during 
+exercise execution. 
+ View Rep Count: Shows the number of correctly completed repetitions in real time. 
+ View Calories Burned: Displays continuously updated calorie burn estimates during the workout session. 
+ Accept or Skip Suggestion: Allows the user to either accept or skip suggestive workout planning. 
+ Log Nutrition Intake: Allows the user to manually record meals and calorie consumption or to select from 
+a drop-down list. 
+ View Progress Dashboard: Presents graphical summaries of workout performance, calorie balance, and 
+goal compliance. 
+ Receive Notifications: Sends reminders for workouts, meals, hydration, and rest. 
+Primary Use Cases (AI Model): 
+ Filtered Exercise List: Filters exercise list according to users health profile.  
+ Pose Detection and Tracking: Automatically detects body key points from live camera input using 
+computer vision models. 
+ Posture Evaluation: Analyzes detected poses and determines correctness of exercise execution. 
+ Repetition Counting: Computes repetition count based on movement patterns and posture validation. 
+ Calorie Estimation: Calculates calories burned based on joint angles, exercise duration, movement 
+quality, and user profile. 
+ Suggestive Workout Adjustment: Suggests workout difficulty or suggests safer alternatives based on user 
+31  
+performance to do post normal workout session according to user’s progress and health condition. 
+ Diet and Recipe Recommendation: Generates personalized diet plans and recipe suggestions using 
+metabolic calculations and medical conditions.  
+ 
+Relationships: 
+ User → AI GymMate System: The user interacts with the system to perform workouts, manage nutrition, 
+and view progress. 
+ AI Model → AI GymMate System: The AI Model continuously processes data and supports system 
+functionality through automated analysis and recommendations. 
+ Include / Extend Relationships: Start Workout Session includes Pose Detection, Posture Evaluation, 
+View Rep Count, and View Calories Burned.  
+ Medical Screening extends Select Exercise by enabling safety-based filtering. 
+ Diet Plan Generation extends Log Nutrition Intake. 
+Flow Summary 
+1. The user registers or logs in and sets up their profile. 
+2. Medical screening and optional report upload are completed. 
+3. The user sets fitness goals and selects approved exercises. 
+4. During workouts, the AI Model performs pose detection and provides real-time feedback. 
+5. Repetitions and calories are tracked automatically. 
+6. Workout difficulty is suggested based on performance and safety rules for the user to do after the 
+exercise session. User can either accept or skip it. 
+7. Nutrition intake is logged and diet/recipe suggestions are generated according to medical conditions. 
+8. Progress analytics and notifications support long-term engagement. 
+32  
+5.3 Activity Diagram 
+5.3.1 Activity Diagram (User) 
+ 
+The User Activity Diagram illustrates how the user interacts with the AI GymMate system across its four key 
+modules — Workout, Nutrition, Progress Tracker, and Profile/Settings. It focuses on the step-by-step flow of 
+user actions, system responses, and decision points that define a complete interaction cycle. 
+Each activity ensures that users experience adaptive, safe, and personalized guidance throughout their fitness 
+journey. 
+33  
+Activity Diagram (Workout Module-User) 
+ 
+ 
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                            Fig 5.3.1.1 Activity Diagram (Workout Module-User) Of AI GymMate 
+
+34  
+1. Workout Module 
+ 
+1.1 Select Workout Mode 
+ 
+The user begins by opening the application and arriving at the home screen. From here, the user selects 
+Workout Mode, which initia tes the workout flow. This action signals the system to prepare the exercise 
+environment, fetch the user’s profile details, and verify any medical flags associated with their account.  
+ 
+1.2 Decision – Is User Healthy? 
+ 
+Once the workout mode is selected, the sys tem checks whether the user is marked as medically healthy or 
+has any active medical conditions. This ensures that the upcoming exercise recommendations remain safe. 
+If  the  user  is  medically  healthy,  the  system  provides  access  to  the  complete  exercise  list. 
+If not, it limits the user to a filtered exercise list containing only low-intensity and medically safe exercises. 
+ 
+1.3 Select Exercise 
+ 
+After the exercise list (full or filtered) is displayed, the user selects an exercise to perform. This marks the 
+start of the session and triggers the initialization of the live camera tracking module.  
+ 
+1.4 Start Camera Feed for Live Tracking 
+ 
+Once an exercise is selected, the camera feed is activated to capture the user’s real -time body movements. 
+The AI -based pose detection model begins analyzing these movements to detect posture and calculate 
+repetitions. 
+ 
+1.5 User Performs Exercise 
+ 
+The user sta rts performing the selected exercise while the camera continuously tracks their movement. 
+During this stage, the system monitors posture accuracy, repetition completion,  calories burned  and 
+movement fluidity in real time.  
+ 
+1.6 Decision – Is User’s Posture Good? 
+ 
+As the exercise proceeds, the system constantly evaluates whether the user’s posture aligns with the correct 
+form. If the posture is good, the system counts the repetition.  If the posture is incorrect, the system 
+triggers corrective feedback. 
+ 
+1.7 User Sees Posture Feedback and Live Rep/Calorie Count 
+ 
+During exercise, the user receives real -time visual feedback about posture correctness and can view live 
+metrics such as repetitions and calories burned. This instant feedback helps users maintain proper form and 
+stay motivated. 
+ 
+1.8 User Adjusts Posture According to Feedback 
+ 
+When posture feedback indicates incorrect form, the user adjusts their body position to align with the 
+guidance provided. This correction ensures the next movement is recorded accurately and prevents injury. 
+ 
+1.9 Decision – User Presses Stop? 
+ 
+At any time, the user can press the stop button if they wish to pause or end the session. 
+35  
+If the stop button is not pressed, the user continues performing the exercise and remains in the feedback loop. 
+If pressed, the session concludes and moves to summary generation.  
+ 
+1.10 User Ends Workout Session 
+ 
+When the stop command is given, the workout session ends. The system terminates live tracking and 
+compiles session data such as total repetitions, accuracy percentage, and calories burned.  
+ 
+1.11 User Sees Session Summary on Screen 
+ 
+After ending the session, a summary report is displayed to the user. It provides detailed insights about the 
+workout, including performance metrics and progress updates.  
+ 
+1.12 App Shows Optional Difficulty Suggestion 
+ 
+Based on the user’s recent performance, the system may provide a suggestive difficulty suggestion. For 
+example, it may recommend increasing or reducing the number of repetitions or suggest a different exercise 
+for balance. 
+ 
+1.13 Decision – User Accepts Suggestion? 
+ 
+The user decides whether to accept or reject the suggested workout plan. If accepted, the user starts 
+the suggested exercise immediately. If rejected, the user may check progress or return to the home screen.  
+ 
+1.14 Decision – User Wants to Check Progress? 
+ 
+After the workout, the system prompts the user to review their progress. If the user chooses to do so, they 
+are redirected to the Progress Tracker. Otherwise, the user returns to the Home Screen.  
+ 
+1.15 End of Workout Flow 
+ 
+The workout activity terminates after session data is stored and synced to the cloud. The user can now 
+navigate to any other feature.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+36  
+Activity Diagram (Nutrition Module-User) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                   Fig 5.3.1.2 Activity Diagram (Nutrition Module-User) Of AI GymMate 
+
+37  
+2. Nutrition Module 
+ 
+2.1 Select Nutrition Mode 
+ 
+From the home screen, the user selects the Nutrition Mode. This opens the nutrition management flow where 
+the user can either log their daily meals or generate a personalized diet plan.  
+ 
+2.2 Decision – Nutrition Log or Diet Plan Generator? 
+ 
+The system asks the user to choose between Nutrition Log or Diet Plan Generator. This choice determines 
+which workflow is followed next.  
+ 
+2.3 Nutrition Log Path 
+ 
+If the user selects the nutrition log, they can either input meal names and calorie values manually or choose 
+items from a predefined food list. The system records these entries and updates the daily calorie intake count 
+accordingly. This helps the user maintain awareness of their calorie consumption and nutritional balance.  
+ 
+2.4 Diet Plan Generator Path 
+ 
+If the user chooses the Diet Plan Generator option, the system automatically creates a personalized diet plan 
+based on the user’s goals (such as weight loss, gain, or maintenance), workout progress, and medical 
+conditions. The generated plan includes meal recommendations and recipe suggestions to make 
+implementation easier and more practical.  
+ 
+2.5 Display Plan and Sync Data 
+ 
+The generated plan or nutrition log is displayed to the user for review. The data is also stored locally and 
+synced to the cloud to ensure  persistence. After this step, the user can proceed to view progress or return to 
+the home screen. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+38  
+Activity Diagram (Progress Tracker Module-User) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     Fig 5.3.1.3 Activity Diagram (Progress Tracker Module-User) Of AI GymMate 
+ 
+
+39  
+3. Progress Tracker Module 
+ 
+3.1 Open Progress Tracker 
+ 
+When the user chooses the Progress Tracker option, the system retrieves the latest performance data, 
+including exercise and nutrition details. The progress tracker acts as the user’s dashboard for overall fitness 
+performance. 
+ 
+3.2 View Past Performance 
+ 
+The user can view historical data such as previous workout sessions, calorie trends, and diet adherence. This 
+helps them analyse how consistently they have followed the plan over time.  
+ 
+3.3 Analyse Trends 
+ 
+The system analyses the user’s logged data to identify patterns and progress trends. Graphs and charts are 
+generated to provide visual insights into workout efficiency, calorie balance, and goal achievement. 
+ 
+3.4 Decision – User Wants Detailed View 
+ 
+At this decision point, the user can choose to view a detailed analysis of their performance metrics or just a 
+summarized overview.If a detailed view is chosen, the system displays an in-depth comparison 
+across timeframes. If not, the user is redirected to  the main progress summary.  
+ 
+3.5 Display Feedback and Sync Data 
+ 
+The system displays feedback such as “Excellent Progress,” “Needs More Consistency,” or “Increase 
+Workout Intensity.” All updated analytics are saved locally and synchronized with the cloud for d ata 
+persistence and model learning.  
+ 
+3.6 Decision – Return to Home Screen 
+ 
+Once the analysis is complete, the user may return to the home screen to start another session or exit the app. 
+This concludes the progress tracking module.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+40  
+Activity Diagram (Profile/Settings Module-User) 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+         Fig 5.3.1.4 Activity Diagram (Profile/Settings Module-User) Of AI GymMate 
+ 
+
+41  
+ 
+4. Profile and Settings Module 
+ 
+4.1 Open Settings/Profile 
+ 
+From the home screen, the user may select Settings/Profile to access personal details and app preferences. 
+This section allows the user to manage profile data and medical information.  
+ 
+4.2 Decision – Edit Profile or Upload Reports? 
+ 
+The system prompts the user to select whether they want to edit their profile or upload medical reports. This 
+choice defines the subsequent flow.  
+ 
+4.3 Edit Profile Path 
+ 
+If the user selects “Edit Profile,” they can modify personal details such as name, age, height, weight, and 
+fitness goals. These  updates ensure that the system provides accurate recommendations in future workouts 
+and diet plans. 
+ 
+4.4 Upload Reports Path 
+ 
+If the user chooses “Upload Reports,” they can upload medical files such as BP reports, cholesterol readings, 
+or ECG interpretations. The system stores these securely and uses the data to reassess the user’s medical risk 
+level, ensuring safer exercise recommendations.  
+ 
+4.5 Return to Settings/Profile 
+ 
+After completing the profile update or report upload, the user returns to the settings interface. From there, 
+they can either modify other details or navigate back to the home screen.  
+ 
+4.6 Decision – Return to Home Screen 
+ 
+When the user finishes making changes, they can return to the home screen. All updates are saved and synced 
+to maintain profile consistency across devices.  
+ 
+4.7 End of Profile/Settings Flow 
+ 
+This marks the completion of the profile and settings module. The user can now continue with workouts,  
+nutrition logging, or close the app.  
+42  
+5.3.2 Activity Diagram (Model) 
+ 
+The Model Activity Diagram represents the complete behavioral flow of interactions between the model and 
+the AI GymMate  system, illustrating how a model navigates through different functional modules such as 
+exercise execution, nutrition management, progress tracking, and profile settings.  
+ 
+These diagrams focus on the dynamic behavior of the system rather than its static s tructure. It captures 
+sequential actions, decision-making points, loops, and system responses, ensuring that the application delivers 
+personalized, safe, and adaptive fitness guidance to users with varying health conditions and goals. The 
+activity diagram plays a critical role in understanding how exercise is filtered, real-time sensor input (camera 
+feed), user profile data, medical risk information, and AI-driven analytics work together to generate intelligent 
+feedback, suggestive exercise plans, and dietary recommendations. 
+43  
+5.3.2.1 Workout Module-Model 
+ 
+Fig 5.3.2.1 Activity Diagram (Workout Module-Model) Of AI GymMate Project 
+
+44  
+1. Receive Workout Mode Request from UI 
+The workout activity begins when the UI sends a workout mode request to the system. This request indicates 
+that the workout module has been triggered and the model must initiate the exercise workflow. Upon 
+receiving this request, the model initializes all required components such as filtering of exercises, motion 
+tracking, medical validation, pose analysis, real-time performance monitoring and suggestive exercise plans 
+after each exercise section. 
+ 
+2. Receive User Profile and Medical Flags 
+After receiving the workout request, the model retrieves the stored profile details and medical flags from the 
+backend. These flags include information related to heart conditions, blood pressure, diabetes, cholesterol 
+levels, or other health risks. This step ensures that the model has complete awareness of the individual’s 
+physical condition before processing exer cise-related decisions. 
+ 
+3. Filter Safe Exercise List Based on Medical Constraints 
+Using the received medical flags, the model applies medical constraint rules to the exercise database. 
+Exercises that may pose health risks are filtered out. If no medical issues are detected, the model allows the 
+full exercise list. If risks are present, only medically safe and low-impact exercises are retained. This ensures 
+safety-driven decision-making at the model level.  
+ 
+4. Send Appropriate Exercise List to UI 
+Once filtering is completed, the model sends the appropriate exercise list to the UI. This list reflects the safest 
+and most suitable workout options based on medical and fitness conditions, ensuring the interface presents 
+only validated exercise choices.  
+ 
+5. Receive Live Camera Frame 
+After an exercise is selected, the model begins  receiving live camera frames from the device. These frames 
+serve as continuous visual input, capturing body movements in real time  for posture analysis and repetition 
+detection. 
+ 
+6. Run Pose Detection Model 
+Each incoming camera frame is processed through the pose detection model. The model identifies key body 
+landmarks such as joints and limb positions, enabling it to interpret how the exercise is being performed.  
+ 
+7. Generate Skeleton Key points 
+The detected landmarks are converted into skeleton key points. These key points provide a structured 
+representation of body posture, which helps the model track movement consistency and analyse posture 
+accurately across frames. 
+ 
+8. Calculate Joint Angles 
+Using the skeleton key points, the model calculates joint angles for relevant body parts involved in the 
+exercise. These angles are computed continuously and compared against predefined ideal ranges for the 
+selected exercise. 
+ 
+9. Evaluate Posture Accuracy 
+The calculated joint angles are analyzed to determine posture accuracy. The model evaluates whether the 
+movement adheres to correct execution standards, which directly affects repetition validation.  
+ 
+10. Decision – Is Posture Correct? 
+At this decision point, the model determines whether the posture is correct. If the posture meets accuracy 
+thresholds, the workflow proceeds to repetition counting. If not, the model diverts to posture correction 
+feedback generation. This decision ensures exercise quality control . 
+45  
+11. Allow Rep Count 
+When posture correctness is confirmed, the model allows the repetition to be counted. This prevents incorrect 
+or partial movements from contributing to workout statistics.  
+ 
+12. Update Rep Count 
+The model increments the repetition count and updates the internal workout state. This updated count is used 
+for live display and final session summary generation.  
+ 
+13. Generate Posture Correction Feedback 
+If posture is incorrect, the model generates corrective feedback indicating alignment or movement issues. 
+This feedback is tailored to the detected error to enable effective posture correction.  
+ 
+14. Send Correction Feedback to UI 
+The generated correction feedback is sent to the UI in real time. This ensures immediate visual guidance, 
+allowing posture correction without interrupting the workout flow.  
+ 
+15. Estimate Calories Using Angles and Motion 
+The model estimates calories burned using joint angles, motion intensity, repetition duration, and stored 
+profile parameters such as weight. This calculation provides an accurate energy expenditure estimate.  
+ 
+16. Send Live Reps and Calories to UI 
+The model continuously sends live repetition count and calorie data to the UI. This real-time feedback 
+enhances engagement and performance awareness.  
+ 
+17. Decision – Session Still Active? 
+The model checks whether the workout session is still active. This decision determines whether processing 
+should continue or move toward session termination.  
+ 
+18. Process Next Camera Frame 
+If the session remains active, the model processes the next incoming camera frame and loops back to the  
+pose detection stage, maintaining continuous real -time analysis. 
+ 
+19. End Workout Session 
+If the session is no longer active, the model terminates live tracking and stops further frame processing, 
+transitioning to post-workout analysis. 
+ 
+20. Generate Session Summary 
+After session termination, the model generates a comprehensive session summary containing total 
+repetitions, calories burned, and posture accuracy metrics.  
+ 
+21. Store Session Data to Progress Tracker 
+The session summary and performance metrics are stored in the progress tracker database. This enables  
+long-term progress monitoring and historical analysis.  
+ 
+22. Send Session Summary to UI 
+The stored session summary is se nt to the UI, allowing immediate visualization of workout performance  
+after completion. 
+ 
+23. Analyze User Performance 
+The model analyzes stored workout data to assess overall performance trends and consistency, forming the 
+basis for suggestive exercise recommendations. 
+46  
+24. Decision – Is Exercise Difficulty Adjustment Recommended? 
+Based on performance analysis, the model decides whether a n exercise difficulty adjustment is required to 
+optimize training intensity and progression.  
+ 
+25. Generate Exercise Difficulty Suggestion 
+If adjustment is recommended, the model generates a personalized difficulty suggestion, such as modifying 
+repetition count, intensity, or exercise type for the user to do after normal exercise session . 
+ 
+26. Send Suggestion to UI 
+The generated difficulty suggestion is sent to the UI for display, allowing it to be presented for consideration. 
+ 
+27. No Suggestion Generated 
+If no adjustment is required, the model skips recommendation generation and proceeds toward workflow  
+completion. 
+ 
+28. End 
+The workout module activity concludes after summary generation and optional recommendation delivery. 
+The model remains ready to handle the next workflow request. 
+47  
+5.3.2. Nutrition Module (Model) 
+ 
+ 
+ 
+ 
+      Fig 5.3.2.2 Activity Diagram (Nutrition Module-Model) Of AI GymMate Project 
+
+48  
+1. Receive Nutrition Mode Request from UI: The nutrition workflow begins when the UI sends a nutrition 
+mode request to the system. This request indicates that the nutrition module has been activated and that 
+the model must handle nutrition -related operations such as food logg ing or diet plan generation. Upon 
+receiving this request, the model initializes the required nutrition processing components.  
+2. Request Type Decision: After receiving the nutrition mode request, the model evaluates the request type. 
+At this decision point, t he model determines whether the requested operation is nutrition logging or AI - 
+based diet plan generation. This branching ensures that the model follows the appropriate processing path 
+based on the selected action. 
+3. Receive Meal Name and Calorie Value from  UI: If the nutrition log path is selected, the model receives 
+meal details including the meal name and corresponding calorie value from the UI. This information may 
+originate from manual entry or selection from a predefined food list. This step enables accurate capture of 
+daily dietary intake data. 
+4. Store Meal Entry to Nutrition Database: Once the meal details are received, the model stores the meal 
+entry in the nutrition database. This ensures that all consumed food items are persistently recorded for 
+daily tracking and long-term nutritional analysis.  
+5. Update Daily Calorie Intake: After storing the meal entry, the model updates the daily calorie intake by 
+adding the newly logged calories to the existing daily total. This allows continuous and accurate 
+monitoring of calorie consumption.  
+6. Store Updated Intake to Progress Database: The updated calorie intake is then stored in the progress 
+database. This step integrates nutrition data with workout and activity data, enabling holistic fitness and 
+health tracking. 
+7. Send Updated Calorie Summary to UI: The model sends the updated calorie summary to the UI. This 
+allows the interface to display the latest daily calorie consumption, supporting informed dietary decisions. 
+8. Receive User Profile and Medical Flags: If the d iet plan generation path is selected, the model retrieves 
+stored profile details and medical flags from the backend. These include age, weight, fitness goals, and 
+health conditions such as diabetes or cardiovascular risks. This information ensures safe and personalized 
+diet planning. 
+9. Fetch Recent Progress Data: The model fetches recent progress data, including calories burned  with 
+respect to joint angles during workouts and previously defined goals. This contextual data allows the diet 
+plan to be aligned with recent physical activity levels.  
+10. Apply Medical Constraint Rules: Using the retrieved medical flags, the model applies medical constraint 
+rules. These rules restrict unsuitable food items or calorie ranges, ensuring that diet recommendations 
+comply with medical safety requirements.  
+11. Calculate Target Calorie Intake: After applying constraints, the model calculates the target daily calorie 
+intake. This calculation considers fitness goals such as weight loss, weight gain, or maintenance, along 
+with energy expenditure and medical limits.  
+12. Generate Diet Plan (Meals and Calories): Based on the target calorie intake, the model generates a 
+structured diet plan specifying meals and calorie distribution throughout the day. This plan ensures 
+nutritional balance while supporting fitness objectives. 
+49  
+13. Generate Recipe Suggestions: To improve usability and adherence, the model generates recipe suggestions 
+that align with the diet plan. These recipes meet calorie targets and medical constraints while providing 
+variety and convenience. 
+14. Send Diet Plan and Recipes to UI: The generated diet plan and recipe suggestions are sent to the UI. This 
+enables clear presentation of recommended meals and recipes for review.  
+15. Return Contro l to UI: After completing nutrition processing and data transmission, the model returns 
+control to the UI. The interface can then allow further interactions such as logging additional meals or 
+navigating to other modules. 
+16. End Nutrition Module: The nutritio n module concludes after successful processing and UI update. All 
+relevant nutrition data is securely stored, and the model remains available for future requests.  
+50  
+5.3.2.3 Progress Tracker Module-Model 
+ 
+ 
+Fig 5.3.2.3 Activity Diagram (Progress Tracker Module-Model) Of AI GymMate Project 
+
+51  
+1. Receive Progress View Request from UI: The progress tracking workflow begins when the UI sends a 
+progress view reques t to the system. This request indicates that the progress tracker module has been 
+activated and that the model must retrieve and analyse stored fitness data. Upon receiving this request, the 
+model initiates data aggregation and analysis procedures.  
+2. Fetch Workout Session Data from Progress Database: After receiving the progress request, the model 
+retrieves workout session data from the progress database. This data includes completed workout sessions, 
+repetition counts, posture accuracy scores, and calories burned. Accessing this data allows the model to 
+evaluate physical activity trends over time.  
+3. Fetch Nutrition Data from Nutrition Database: The model then retrieves nutrition -related data from the 
+nutrition database. This includes logged meals, daily calori e intake, and dietary patterns. Integrating 
+nutrition data with workout data enables a comprehensive assessment of overall health and fitness 
+progress. 
+4. Fetch User Goals from User Profile Database: Next, the model retrieves fitness goals from the user profile 
+database. These goals may include weight loss, weight gain, or fitness maintenance objectives. This 
+ensures that progress analysis is aligned with predefined personal goals.  
+5. Calculate Daily Summary: Using the retrieved workout and nutrition data, t he model calculates a daily 
+summary. This summary includes total calories burned, total calories consumed, and total repetitions 
+completed during the day. The daily summary provides a concise representation of short -term 
+performance. 
+6. Calculate Weekly Summary: After generating the daily summary, the model calculates a weekly summary 
+by aggregating daily data. This includes weekly totals and averages for calories burned, calories 
+consumed, and repetitions. Weekly summaries allow the model to identify  broader performance patterns 
+and trends. 
+7. Analyze Progress Against User Goals: The model analyzes the calculated daily and weekly summaries 
+against the retrieved fitness goals. This analysis determines whether activity and nutrition patterns align 
+with the desired outcomes and forms the basis for feedback generation.  
+8. Decision – Goals on Track?: At this decision point, the model evaluates whether performance metrics 
+meet expected thresholds. If the metrics indicate sufficient progress, the goals are considered on tra ck. 
+Otherwise, the model identifies deviations that require improvement.  
+9. Generate Positive Progress Status: If the goals are on track, the model generates a positive progress status. 
+This status reflects consistent performance and serves as motivational feedback. 
+10. Generate Improvement Status: If the goals are not on track, the model generates an improvement status. 
+This feedback highlights gaps in activity or nutrition and indicates the need for behavioral adjustments.  
+11. Prepare Progress Metrics and Chart Da ta: Regardless of the evaluation outcome, the model prepares 
+structured progress metrics and chart -ready data. These datasets are formatted for visual representation 
+such as graphs and trend charts.  
+12. Send Progress Data to UI: The prepared progress metrics and visual data are  sent to the UI. This enables 
+the interface to display clear summaries and charts for performance interpretation.  
+13. Store and Synchronize Progress Data in Backend: Finally, the model stores and synchronizes the 
+processed progress data in t he backend. This ensures data persistence, cross -device consistency, and 
+availability for future analysis. Upon completion, the progress tracking workflow concludes.  
+52  
+5.3.2.4 Profile/Settings Module-Model 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig 5.3.2.4 Activity Diagram (Profile/Settings Module-Model) Of AI GymMate Project 
+
+53  
+1. Receive Profile/Settings Request from UI: The profile and settings workflow begins when the UI sends a 
+profile or settings request to the system. This request indicates that the profile/settings module has been 
+activated and that the model must either retrieve existing user information or process profile updates. Upon 
+receiving this request, the model initializes profile-related operations. 
+2. Request Type Decision: At this decision point, the model determines whether the request is for viewing 
+existing profile details or updating profile information. This decision ensures that the model follows the 
+appropriate execution path for data retrieval or data modification.  
+3. Fetch User Profile Data from User Profile Database: If the request is to view the profile, the model 
+retrieves stored user profile data from the user profile database. This data includes personal attributes such 
+as age, height, weight, fitness goals, preferences, and stored medical information. Retrieving this data 
+allows the model to present the most recent and accurate profile details.  
+4. Send Profile Data to UI: After fetching the profile data, the  model sends the retrieved information to the 
+UI. This enables the interface to display the user’s current profile details without making any changes to 
+the stored data. 
+5. Receive Updated Profile Data: If the request is to update the profile, the model recei ves updated profile 
+information from the UI. This may include changes to weight, height, fitness goals, preferences, or 
+medical-related inputs. This step captures all user-modified information accurately for further processing. 
+6. Update User Profile Database: Once the updated profile data is received, the model updates the user profile 
+database accordingly. This ensures that all future modules —such as workout adaptation, nutrition 
+planning, and progress tracking —use the latest user information for personalize d and accurate 
+recommendations. 
+7. Confirm Profile Update to UI: After successfully updating the profile database, the model sends a 
+confirmation response to the UI. This confirmation assures that profile changes have been saved and 
+applied successfully. 
+8. End Profile/Settings Module: The profile and settings activity concludes after completing the requested 
+operation. The model remains idle and ready to handle subsequent requests from other modules or user 
+actions. 
+54  
+5.4 Sequence Diagram 
+Purpose: 
+ 
+This sequence diagram illustrates the complete operational flow of the AI GymMate  system, detailing how 
+user actions are processed through multiple intelligent modules. It explains how data flows sequentially 
+between the UI, Workout Module, AI Pose Detection Model, Nutrition Module, Progress Analytics, Profile 
+Management, Local Storage , and Cloud Storage. The diagram highlights real -time processing, medical - 
+aware decision making, adaptive feedback generation, and persistent data synchronization.  
+55  
+Sequence Diagram 
+
+56  
+ 
+
+57  
+ 
+          Fig 5.4 Sequence Diagram of AI GymMate Project 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+58  
+1. App Launch and Onboarding Module: The sequence begins when the user launches the mobile 
+application. The Mobile App UI initializes and prompts the user to log in or create a new account. Once 
+authentication is successful, the user enters basic profile deta ils such as age, height, weight, and fitness 
+goals. 
+Next, the User Profile & Medical Data Module receives this information and stores the user profile. The 
+user is then guided through a medical questionnaire, where health conditions such as heart disease, blood 
+pressure issues, diabetes, or cholesterol levels are recorded. If the user uploads medical reports, the system 
+parses the report text, extracts medically relevant values, and evaluates the user’s overall health status. 
+Based on the extracted data, the system determines the medical risk level of the user and securely stores 
+both the medical data and risk classification. This onboarding sequence ensures that all future system 
+actions are personalized and medically safe.  
+2. Workout Module Sequence 
+ 
+2.1 Workout Mode Initialization: When the user selects Workout Mode from the home screen, the 
+Workout Module is activated. The module immediately requests the user’s medical risk level from 
+the User Profile & Medical Data Module. This request ensures that exercise r ecommendations are 
+aligned with the user’s health condition. Once the risk level is received, the Workout Module applies 
+medical constraint rules. For healthy users, the full exercise dataset is loaded. For medically flagged 
+users, unsafe exercises are filtered out, and only low-impact or restricted exercises are selected. The 
+filtered exercise list is then sent back to the UI for display.  
+ 
+2.2 Exercise Execution and Real-Time Processing: After the user selects an exercise and starts the workout 
+session, the Workout Module activates the device camera. The live camera feed is forwarded to the AI 
+Model (Pose Detection & Intelligence Engine). Inside a continuous loop that runs for each camera 
+frame, the model performs the following actions: detects body landmark s using pose detection, 
+generates a skeleton representation, calculates joint angles, evaluates posture accuracy, counts 
+repetitions only when posture is correct, and estimates calories burned using motion amplitude, 
+duration, and user weight. Throughout t his loop, the model sends live repetition count, calorie burn, 
+and posture feedback back to the Workout Module, which forwards it to the UI in real time. This 
+creates a continuous feedback loop that guides the user during exercise execution.  
+2.3 Workout Termination and Adaptation: When the user presses the Stop button, the Workout Module 
+terminates the live session. The AI Model generates a session summary containing total repetitions, 
+total calories burned, and posture accuracy statistics. This summary is sent to the Progress & Analytics 
+Module, where the user’s performance is analyzed. Based on this analysis, the system determines 
+whether an exercise difficulty adjustment is recommended. If required, the Workout Module sends a 
+personalized difficulty suggestio n to the UI. The user may choose to accept or skip the suggestion, 
+after which the workout sequence concludes.  
+3. Nutrition Module Sequence 
+ 
+3.1 Nutrition Mode Selection: When the user selects Nutrition Mode, the Nutrition Module is activated. 
+The UI allows the user to choose between logging nutrition data or requesting a diet plan.  
+ 
+3.2 Nutrition Logging Flow: If the user chooses to log meals, food details such as meal name and quantity 
+are entered through the UI. The Nutrition Module stores this information in the nutrition database and 
+calculates total calorie intake. The updated calorie balance is forwarded to the Progress & Analytics 
+Module, which integrates nutrition data with workout data. This information is then saved in Local 
+Storage and synchronized with Cl oud Storage, ensuring data persistence and availability across 
+devices. 
+59  
+3.3 Diet Plan Generation Flow: If the user requests a diet plan, the Nutrition Module fetches the user’s 
+medical constraints and fitne ss goals. It also retrieves recent calorie burn and activity data from the 
+Progress Module. Using this information, the system calculates the target daily calorie intake. A 
+medically safe, goal -oriented diet plan is generated along with recipe suggestions.  The final diet plan 
+and recipes are sent to the UI for user review.  
+4. Progress Tracker and Analytics Module: When the user accesses the Progress Tracker, the Progress & 
+Analytics  Module  retrieves  workout  history,  nutrition  logs,  and goal  data  from  storage. 
+The module calculates daily summaries, weekly summaries, performance trends, and goal compliance 
+status. Based on the analysis, the system generates either a positive progress status or an improvement 
+recommendation. Visual charts and metrics are  prepared and sent to the UI. All analyzed data is stored 
+locally and synchronized to the cloud.  
+5. Settings / Profile Management Module: When the user opens Settings/Profile, the system fetches existing 
+profile information from the database and displays it on the UI. If the user updates profile details or 
+uploads new medical reports, the system reprocesses the data. Medical reports are re -parsed, health 
+indicators are re-evaluated, and the user’s medical risk level is updated if necessary. Updated profile data 
+is stored in Local Storage and synchronized with Cloud Storage to ensure consistency across sessions.  
+6. Data Storage and Synchronization Flow: Throughout all modules, Local Storage acts as a temporary cache 
+to ensure offline functionality. The Cloud Storage module synchronizes user data such as workouts, 
+nutrition logs, progress metrics, and profile settings. This guarantees data durability, backup, and cross - 
+device access. 
+ 
+Summary 
+This sequence diagram demonstrates a fully integrated AI -powered fit ness ecosystem, where user actions 
+trigger intelligent model processing, medical -aware decisions, adaptive feedback, and persistent data 
+synchronization. The modular and sequential design ensures safety, personalization, scalability, and a 
+seamless user experience throughout the AI GymMate application.  
+60  
+5.5 Gantt Chart 
+The Gantt chart shown above represents the comprehensive timeline and task scheduling for the project “AI 
+GymMate – Intelligent Fitness and Nutrition Assistant”. It provides a visual breakdown of the project’s 
+workflow, covering all major development phases over a period of 16 weeks (4 months) — from system 
+design and dataset preparation to model integration, fronten d development, testing, and final submission.  
+ 
+The project is organized into sequential and overlapping phases to ensure efficient use of time and resources 
+while maintaining smooth collaboration among the team members.  
+ 
+Gantt Chart 
+ 
+                                           Fig 5.5 Gantt Chart Of AI GymMate Project 
+
+61  
+Weeks 1–2: Dataset & Admin Setup 
+ 
+The project begins with data preparation and administrative configuration. Activiti es include identifying 
+relevant datasets for workout and nutrition recommendations, structuring data for training, and designing the 
+admin dashboard. This phase establishes the data foundation and basic control interfaces required for system 
+management. 
+ 
+Weeks 3–4: AI Model Development 
+ 
+During this phase, the team focuses on developing the core AI modules, including CNN -based posture 
+detection and MLP -based feedback engines. The model is trained to analyze user posture, detect exercise 
+correctness, and recommend appropriate feedback for performance improvement.  
+ 
+Weeks 5–7: Nutrition & Frontend Module 
+ 
+The frontend design and nutrition logic module are developed in parallel. Key tasks include creating user 
+interfaces for nutrition tracking, integrating th e meal dataset, and linking frontend inputs to the model 
+backend. By the end of this phase, the system is capable of displaying personalized workout and diet 
+suggestions through an interactive dashboard.  
+ 
+Weeks 8–10: Backend Integration & Intelligence Layer 
+ 
+This critical stage involves integrating the adaptive engine, user feedback mechanisms, and performance 
+analytics. The backend is connected to cloud services for data storage and retrieval. Modules such as the 
+Progress Dashboard, Analytics, and Secu rity Layer are implemented to ensure intelligent decision -making 
+and secure user data handling.  
+ 
+Weeks 11–13: Integration & Quality Assurance (QA) 
+ 
+The various modules are merged into a unified system and tested for consistency. The full-system integration 
+and internal testing/debugging steps ensure that the AI models, frontend interface, and database layers work 
+together seamlessly. 
+ 
+Weeks 14–16: Finalization & Submission 
+ 
+The final stage covers documentation, demo preparation, and final submission. Testing feedback is 
+incorporated, and system performance is optimized. The project concludes with a stable, functional prototype 
+of the AI GymMate application, ready for evaluation and deployment demonstration.  
+ 
+Overall, this Gantt chart illustrates how the project progresses logically from conceptualization to 
+implementation. Each module is planned with overlapping tasks to ensure minimal idle time and maximum 
+productivity. The structure enables effective time management, progress tracking, and quality c ontrol 
+throughout development. 
+62  
+6. Future Enhancements 
+The current version of AI GymMate  provides real -time posture correction, adaptive workouts, calorie 
+estimation, and nutrition assistance. However, as technology and user needs evolve, several enhancements 
+can be introduced to make the system more intelligent, engaging, and holistic.  
+ 
+1. Integration with Wearable Devices: 
+ 
+ Enhancement: Connect AI GymMate with smartwatches, fitness bands, or IoT sensors to capture heart 
+rate, oxygen levels, and step count.  
+ Benefit to Users: 
+o Provides more accurate calorie burn estimation by combining pose detection with biometric data. 
+o Enables real-time health monitoring (e.g., alerts for abnormal heart rate during workouts). 
+o Improves personalization by tailoring workouts to the user’s current physical state. 
+2. AI-Powered Voice Coaching: 
+ 
+ Enhancement: Add natural language voice interaction for hands-free guidance during workouts. 
+ Benefit to Users: 
+o Users receive instant verbal corrections without needing to look at the screen. 
+o Creates a more immersive and motivating experience, similar to having a personal trainer. 
+o Enhances accessibility for visually impaired users. 
+3. Advanced Nutrition Personalization: 
+ 
+ Enhancement: Incorporate AI-driven recipe generation based on local cuisine, allergies, and dietary 
+restrictions. 
+ Benefit to Users: 
+o Ensures culturally relevant and practical meal plans. 
+o Helps users with specific health conditions (e.g., diabetes, gluten intolerance). 
+o Improves adherence to diet plans by offering flexible alternatives. 
+4. Gamification & Social Features: 
+ 
+ Enhancement: Introduce leader boards, challenges, and community groups within the app. 
+ Benefit to Users: 
+o Increases motivation through competition and collaboration. 
+o Encourages social accountability, making users more consistent with workouts. 
+o Builds a supportive fitness community, reducing isolation in solo training. 
+5. AI-Driven Injury Prevention: 
+ 
+ Enhancement: Expand posture analysis to detect risky movements and suggest safer alternatives. 
+ Benefit to Users: 
+o Reduces the chance of injuries caused by poor form. 
+o Provides rehabilitation-friendly workouts for users recovering from injuries. 
+o Builds trust by positioning AI GymMate as a safe and reliable fitness assistant. 
+63  
+6. Personalized Progress Prediction: 
+ 
+ Enhancement: Use predictive analytics to forecast user progress (e.g., expected weight loss, strength gain). 
+ Benefit to Users: 
+o Helps users set realistic goals and track long-term improvements. 
+o Provides motivational milestones (e.g., “You’re on track to complete 100 squats this month”). 
+o Encourages consistency by showing future rewards of current effort. 
+7. Multi-Language & Regional Support: 
+ 
+ Enhancement: Expand app support to multiple languages and local measurement units. 
+ Benefit to Users: 
+o Makes AI GymMate accessible to a global audience. 
+o Improves usability for non-English speakers. 
+o Builds inclusivity by adapting to regional health guidelines and food databases. 
+8. Cloud-Based AI Model Updates: 
+ 
+ Enhancement: Enable automatic updates of pose detection and nutrition models via cloud sync. 
+ Benefit to Users: 
+o Ensures users always have the latest AI improvements without reinstalling the app. 
+o Provides continuous accuracy improvements in posture detection. 
+o Keeps the app future-proof with new exercises and diet plans. 
+9. Virtual Reality (VR) & Augmented Reality (AR) Integration: 
+ 
+ Enhancement: Introduce AR overlays for real-time workout guidance or VR-based immersive fitness 
+environments. 
+ Benefit to Users: 
+o Makes workouts interactive and engaging with visual overlays showing correct posture. 
+o VR sessions simulate gym-like environments at home, enhancing motivation. 
+o AR helps users visualize corrections directly on their body movements. 
+10. Mental Wellness Integration: 
+ 
+ Enhancement: Add modules for meditation, stress tracking, and sleep analysis. 
+ Benefit to Users: 
+o Promotes holistic health by combining physical fitness with mental well-being. 
+o Helps users manage stress and recovery, improving workout effectiveness. 
+o Positions AI GymMate as a complete lifestyle assistant, not just a fitness app. 
+64  
+7. Conclusion 
+The AI GymMate project successfully integrates artificial intelligence, computer vision, and data analytics 
+to deliver a smart, interactive health and fitness companion. By combining a posture correction system, 
+personalized workout planner, and nutrition recommender, the system provides users with customized fitness 
+guidance and progress tracking.  
+ 
+The modular design — encompassing data pre -processing, model training, backend logic, and frontend 
+visualization — ensures scalability and maintainability. Through cloud -based integration and adaptive 
+feedback mechanisms, AI GymMate delivers a dynamic experience that evolves with user performance.  
+ 
+The system demonstrates how AI can promote personalized wellness, bridging the gap between human 
+trainers and intelligent automation. It serves as a prototype for real-world fitness applications that can expand 
+into wearable integration, real -time posture monitoring, and AI -driven health insights. 
+ 
+In conclusion, the AI GymMate project exemplifies the potential of artificial intelligence in transforming 
+fitness management. It not only enhances accuracy and engagement in workouts but also encourages a data- 
+driven approach to personal health and nutrition — paving the way for future innovations in intelligent 
+lifestyle technologies. 
+65  
+8. References 
+[1] Z. Cao, G. Hidalgo, T. Simon, S. -E. Wei and Y. Sheikh, “Open Pose: Real -time Multi-Person 2D Pose 
+Estimation using Part Affinity Fields,” IEEE Transactions on Pattern Analysis and Machi ne Intelligence, 
+2021. 
+ 
+[2] World Health Organization (WHO), “Global Physical Activity and Nutrition Guidelines,” World Health 
+Organization Publications, 2023.  
+ 
+[3] TensorFlow Lite, “TensorFlow Lite Documentation – On-device Machine Learning Guide,” Google 
+Developers, 2024. 
+ 
+[4] S. Sharma and R. Kumar, “AI-Driven Fitness Coaching Systems using Deep Learning for Posture 
+Correction,” International Journal of Computer Applications, vol. 183, no. 45, 2024. 
+ 
+[5] G. Bradski, “The OpenCV Library,” Dr. Dobb’s Journal of Software Tools, 2000. 
+ 
+[6] A. Paszke et al., “PyTorch: An Imperative Style, High-Performance Deep Learning Library,” Advances 
+in Neural Information Processing Systems (NeurIPS), 2019.  
+ 
+[7] CVAT Team, “Computer Vision Annotation Tool (CVAT) Documentation,” 2023. 
+ 
+[8] Software Requirements Specification, Wikipedia. 
+ 
+[9] Use Case Diagram, Wikipedia. 
+ 
+[10] Activity Diagram, Wikipedia. 
+ 
+[11] Software Design. Wikipedia. 

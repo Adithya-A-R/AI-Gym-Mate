@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import '../services/workout_service.dart';
 
 class PoseDetectionScreen extends StatefulWidget {
   const PoseDetectionScreen({super.key});
@@ -14,6 +15,12 @@ class _PoseDetectionScreenState extends State<PoseDetectionScreen> {
   bool _isDetecting = false;
 
   String _selectedExercise = "Squat";
+
+  // 🔥 NEW: workout state
+  int _totalReps = 0;
+  double _caloriesBurned = 0.0;
+
+  final String _userEmail = "test@gmail.com"; // TODO: load from auth/profile
 
   @override
   void initState() {
@@ -46,10 +53,52 @@ class _PoseDetectionScreenState extends State<PoseDetectionScreen> {
     super.dispose();
   }
 
-  void _toggleDetection() {
+  // 🔥 START / STOP WORKOUT
+  Future<void> _toggleDetection() async {
+    if (_isDetecting) {
+      // ===== STOP WORKOUT =====
+      await WorkoutService.saveWorkout(
+        email: _userEmail,
+        exercise: _selectedExercise.toLowerCase(),
+        reps: _totalReps,
+        calories: _caloriesBurned,
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Workout saved successfully"),
+        ),
+      );
+    } else {
+      // ===== START WORKOUT =====
+      _totalReps = 0;
+      _caloriesBurned = 0.0;
+    }
+
     setState(() {
       _isDetecting = !_isDetecting;
     });
+  }
+
+  // 🔧 TEMP PLACEHOLDER (later replaced by model output)
+  void _simulateRep() {
+    if (!_isDetecting) return;
+
+    setState(() {
+      _totalReps++;
+      _caloriesBurned += _estimateCaloriesPerRep();
+    });
+  }
+
+  double _estimateCaloriesPerRep() {
+    switch (_selectedExercise) {
+      case "Push-up":
+        return 0.35;
+      case "Squat":
+        return 0.32;
+      default:
+        return 0.3;
+    }
   }
 
   @override
@@ -62,7 +111,7 @@ class _PoseDetectionScreenState extends State<PoseDetectionScreen> {
               children: [
                 CameraPreview(_cameraController!),
 
-                // ===== SKELETON OVERLAY PLACEHOLDER =====
+                // ===== OVERLAY (DEMO ONLY) =====
                 Positioned.fill(
                   child: IgnorePointer(
                     child: CustomPaint(
@@ -76,62 +125,76 @@ class _PoseDetectionScreenState extends State<PoseDetectionScreen> {
                   top: 16,
                   left: 16,
                   right: 16,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: DropdownButtonFormField<String>(
-                          value: _selectedExercise,
-                          items: const [
-                            DropdownMenuItem(
-                              value: "Squat",
-                              child: Text("Squat"),
-                            ),
-                            DropdownMenuItem(
-                              value: "Push-up",
-                              child: Text("Push-up"),
-                            ),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedExercise = value!;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white70,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                        ),
+                  child: DropdownButtonFormField<String>(
+                    value: _selectedExercise,
+                    items: const [
+                      DropdownMenuItem(
+                        value: "Squat",
+                        child: Text("Squat"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Push-up",
+                        child: Text("Push-up"),
                       ),
                     ],
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedExercise = value!;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white70,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
                   ),
                 ),
 
-                // ===== BOTTOM CONTROLS =====
+                // ===== BOTTOM PANEL =====
                 Positioned(
                   bottom: 24,
                   left: 24,
                   right: 24,
                   child: Column(
                     children: [
-                      if (_isDetecting)
-                        Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.black54,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Text(
-                            "Detecting pose...",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
-                          ),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.black54,
+                          borderRadius: BorderRadius.circular(12),
                         ),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Reps: $_totalReps",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              "Calories: ${_caloriesBurned.toStringAsFixed(1)}",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       const SizedBox(height: 12),
+
+                      // 🔥 TEMP BUTTON TO SIMULATE REP
+                      if (_isDetecting)
+                        ElevatedButton(
+                          onPressed: _simulateRep,
+                          child: const Text("Simulate Rep (Demo)"),
+                        ),
+
+                      const SizedBox(height: 12),
+
                       ElevatedButton.icon(
                         icon: Icon(
                           _isDetecting
@@ -140,8 +203,8 @@ class _PoseDetectionScreenState extends State<PoseDetectionScreen> {
                         ),
                         label: Text(
                           _isDetecting
-                              ? "Stop Detection"
-                              : "Start Detection",
+                              ? "Finish Workout"
+                              : "Start Workout",
                         ),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
@@ -169,21 +232,16 @@ class _PoseOverlayPainter extends CustomPainter {
       ..strokeWidth = 4
       ..style = PaintingStyle.stroke;
 
-    // Placeholder stick figure (for demo)
     canvas.drawCircle(
-        Offset(size.width / 2, size.height / 3), 10, paint);
+      Offset(size.width / 2, size.height / 3),
+      10,
+      paint,
+    );
     canvas.drawLine(
-        Offset(size.width / 2, size.height / 3 + 10),
-        Offset(size.width / 2, size.height / 2),
-        paint);
-    canvas.drawLine(
-        Offset(size.width / 2, size.height / 2),
-        Offset(size.width / 2 - 40, size.height / 2 + 60),
-        paint);
-    canvas.drawLine(
-        Offset(size.width / 2, size.height / 2),
-        Offset(size.width / 2 + 40, size.height / 2 + 60),
-        paint);
+      Offset(size.width / 2, size.height / 3 + 10),
+      Offset(size.width / 2, size.height / 2),
+      paint,
+    );
   }
 
   @override
