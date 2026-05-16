@@ -1,0 +1,59 @@
+===============================================================
+                    GENERAL HOSPITAL
+                    MEDICAL REPORT
+===============================================================
+
+PATIENT INFORMATION
+------------------
+Name: John Doe
+Age: 45
+Date: 15/03/2026
+Patient ID: GH-2026-0345
+
+MEDICAL HISTORY
+---------------
+Diagnosed Conditions:
+1. Hypertension (High Blood Pressure)
+2. Type 2 Diabetes
+3. Knee Pain - Osteoarthritis
+4. Lower Back Pain
+5. Anxiety Disorder
+
+Current Medications:
+- Metformin 500mg twice daily
+- Lisinopril 10mg once daily
+- Ibuprofen as needed for knee pain
+
+RECOMMENDATIONS
+---------------
+1. Avoid high-impact exercises due to knee osteoarthritis
+2. Monitor blood pressure during physical activity
+3. Low-intensity cardiovascular exercises recommended
+4. Avoid heavy lifting due to back pain
+5. Stress management techniques for anxiety
+
+EXERCISE RESTRICTIONS
+--------------------
+- No jumping jacks or high-impact activities
+- No heavy squats or deep knee bends
+- Limit exercises that put stress on lower back
+- Avoid exercises requiring sudden movements
+
+APPROVED EXERCISES
+------------------
+- Wall push-ups (modified)
+- Arm circles (light intensity)
+- Walking (moderate pace)
+- Swimming (if available)
+- Gentle stretching
+
+PHYSICIAN SIGNATURE
+-------------------
+Dr. Sarah Johnson, MD
+Cardiology Department
+General Hospital
+
+===============================================================
+This report contains medical conditions that may affect exercise
+selection and intensity recommendations.
+===============================================================
